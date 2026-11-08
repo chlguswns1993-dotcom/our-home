@@ -1,0 +1,2533 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>최현준 ♥ 조아영 | 우리 집 공동생활 포털 & 가계부</title>
+  
+  <!-- 모바일 웹앱 PWA 풀스크린 메타 태그 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="우리집 포털">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#4F46E5">
+  
+  <!-- 스마트폰 홈 화면 전용 고화질 하트 앱 아이콘 (Apple Touch Icon & Favicon) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23F43F5E'/%3E%3Cstop offset='50%25' stop-color='%23EC4899'/%3E%3Cstop offset='100%25' stop-color='%236366F1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='128' fill='url(%23g)'/%3E%3Cpath fill='%23FFFFFF' d='M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z' transform='scale(0.7) translate(110, 110)'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23F43F5E'/%3E%3Cstop offset='50%25' stop-color='%23EC4899'/%3E%3Cstop offset='100%25' stop-color='%236366F1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='128' fill='url(%23g)'/%3E%3Cpath fill='%23FFFFFF' d='M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z' transform='scale(0.7) translate(110, 110)'/%3E%3C/svg%3E">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Pretendard Font CDN -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            couple: {
+              hyunjun: '#3B82F6', // 현준 블루
+              ayoung: '#EC4899',  // 아영 핑크
+              primary: '#6366F1', // 메인 인디고
+              accent: '#F43F5E',  // 로맨틱 로즈
+              bg: '#F8FAFC'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      background-color: #F8FAFC;
+      color: #1E293B;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* 부드러운 스크롤 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 커스텀 스크롤바 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* 인쇄 전용 스타일 (@media print) */
+    @media print {
+      body {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .no-print, nav, header, footer, #toast-container, #modal-settings, #modal-guide, .action-btn {
+        display: none !important;
+      }
+      .tab-content {
+        display: none !important;
+      }
+      #tab-agreement {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+      .print-page {
+        page-break-after: avoid;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+      .print-border {
+        border: 1px solid #94A3B8 !important;
+      }
+      .badge-print {
+        border: 1px solid #64748B !important;
+        background: transparent !important;
+        color: #000000 !important;
+      }
+    }
+
+    /* 토스트 알림 애니메이션 */
+    @keyframes slideInUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .toast-anim {
+      animation: slideInUp 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col pb-20 md:pb-8">
+
+  <!-- ========================================================================= -->
+  <!-- 1. 헤더 (공통 상단 네비게이션 & 상태 바) -->
+  <!-- ========================================================================= -->
+  <header class="no-print sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- 좌측: 로고 & 커플 브랜딩 -->
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-pink-200">
+          <i class="fa-solid fa-heart text-lg animate-pulse"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-1.5">
+            <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900">
+              최현준 <span class="text-rose-500 text-sm">♥</span> 조아영
+            </span>
+            <span class="text-xs bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full font-semibold border border-indigo-100 hidden sm:inline-block">우리 집 포털</span>
+          </div>
+          <p class="text-xs text-slate-500 hidden sm:block">공동생활 합의서 & 구글 시트 연동 가계부</p>
+        </div>
+      </div>
+
+      <!-- 우측: 구글 시트 연동 상태 & 액션 버튼 -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <!-- 연동 상태 배지 -->
+        <button id="btn-sync-status" onclick="openSettingsModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all hover:shadow-sm" title="구글 시트 연동 상태 확인">
+          <span id="sync-indicator" class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          <span id="sync-text" class="text-slate-700">로컬 모드</span>
+        </button>
+
+        <!-- 새로고침/동기화 버튼 -->
+        <button onclick="fetchCloudData(true)" class="p-2 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded-xl transition" title="데이터 새로고침">
+          <i id="sync-refresh-icon" class="fa-solid fa-rotate text-sm"></i>
+        </button>
+
+        <!-- 배포 가이드 버튼 -->
+        <button onclick="openGuideModal()" class="hidden md:flex items-center space-x-1 px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+          <i class="fa-solid fa-circle-question text-indigo-500"></i>
+          <span>연동 가이드</span>
+        </button>
+
+        <!-- 설정 버튼 -->
+        <button onclick="openSettingsModal()" class="p-2 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded-xl transition" title="구글 시트 API 연동 설정">
+          <i class="fa-solid fa-gear text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 데스크톱 탭 네비게이션 -->
+    <div class="hidden md:block border-t border-slate-100 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex space-x-1">
+        <button onclick="switchTab('dashboard')" id="nav-desktop-dashboard" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-indigo-600 text-indigo-600 flex items-center space-x-2">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>이번 주 당번 & 대시보드</span>
+        </button>
+        <button onclick="switchTab('agreement')" id="nav-desktop-agreement" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-2">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>공동생활 합의서 (인쇄/PDF)</span>
+        </button>
+        <button onclick="switchTab('budget')" id="nav-desktop-budget" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-2">
+          <i class="fa-solid fa-wallet"></i>
+          <span>공동 가계부 & 톨비 정산</span>
+        </button>
+        <button onclick="switchTab('ai')" id="nav-desktop-ai" class="tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-pink-500"></i>
+          <span>AI 월말 결산 프롬프트</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. 메인 콘텐츠 뷰 영역 (각 탭) -->
+  <!-- ========================================================================= -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- [탭 1] 이번 주 당번 & 대시보드 -->
+    <!-- --------------------------------------------------------------------- -->
+    <div id="tab-dashboard" class="tab-content block space-y-6">
+      
+      <!-- 상단 웰컴 배너 & 오늘 날짜 계산 배너 -->
+      <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-56 h-56 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute right-20 -top-10 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-pink-300 border border-white/10 mb-2">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>커플 공동생활 제정일: 2026-11-08</span>
+              <span id="hero-dday-badge" class="bg-pink-500 text-white px-2 py-0.2 rounded-full text-[10px] ml-1">D-Day</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              오늘도 서로 존중하며 행복한 하루! 🏡
+            </h1>
+            <p id="hero-date-display" class="text-sm sm:text-base text-slate-300 mt-1 font-medium">
+              오늘: 2026년 11월 8일 일요일
+            </p>
+          </div>
+
+          <!-- 빠른 당번 요약 캡슐 -->
+          <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/10 self-start md:self-auto">
+            <div class="px-3 py-2 text-center">
+              <p class="text-[11px] text-slate-300">오늘 물채우기</p>
+              <p id="quick-today-robot-who" class="text-sm font-bold text-pink-300">조아영</p>
+            </div>
+            <div class="w-px h-8 bg-white/20"></div>
+            <div class="px-3 py-2 text-center">
+              <p class="text-[11px] text-slate-300">이번 주 일요당번</p>
+              <p id="quick-sunday-who" class="text-sm font-bold text-blue-300">최현준</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 자동 계산 당번 3대 핵심 카드 (그리드) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- 카드 1: 오늘의 로봇청소기 오수통 비우기 & 물 채우기 -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">Daily Duty</span>
+              <span id="badge-robot-type" class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-pink-100 text-pink-700">주말</span>
+            </div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 text-xl flex-shrink-0">
+                <i class="fa-solid fa-faucet-drip"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-tight">로봇청소기 오수 & 물 채우기</h3>
+                <p class="text-xs text-slate-500 mt-0.5">매일 1회 필수 점검</p>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center my-3">
+              <p class="text-xs text-slate-500 mb-1">오늘의 담당자</p>
+              <p id="card1-assigned-name" class="text-xl sm:text-2xl font-extrabold text-pink-600">조아영 🌸</p>
+              <p id="card1-rule-desc" class="text-[11px] text-slate-400 mt-1">평일(월~금): 최현준 / 주말(토~일): 조아영</p>
+            </div>
+          </div>
+          <div class="pt-2">
+            <button onclick="toggleDutyCompleted('robot_daily')" id="btn-duty-robot-daily" class="w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition flex items-center justify-center space-x-2 bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600">
+              <i class="fa-regular fa-circle-check"></i>
+              <span id="btn-duty-robot-daily-text">오늘 물통 관리 완료 체크</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 카드 2: 이번 주 일요일 쓰레기 & 기본 빨래 당번 -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-lg">Weekly Sunday</span>
+              <span id="badge-sunday-week" class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-indigo-100 text-indigo-700">11월 2주차</span>
+            </div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 text-xl flex-shrink-0">
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-tight">일요일 쓰레기 & 기본 빨래</h3>
+                <p class="text-xs text-slate-500 mt-0.5">일반·분리수거 & 면류 건조</p>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center my-3">
+              <p class="text-xs text-slate-500 mb-1">이번 주 일요일 담당자</p>
+              <p id="card2-assigned-name" class="text-xl sm:text-2xl font-extrabold text-blue-600">최현준 💼</p>
+              <p id="card2-rule-desc" class="text-[11px] text-slate-400 mt-1">1·3주차 일요: 조아영 / 2·4주차 일요: 최현준</p>
+            </div>
+          </div>
+          <div class="text-[11px] text-slate-500 bg-amber-50 border border-amber-100 rounded-xl p-2.5 flex items-center space-x-2">
+            <i class="fa-solid fa-shirt text-amber-500 text-xs"></i>
+            <span><strong>골든룰:</strong> 건조 완료 후 빨래는 둘이 <strong>함께 개기</strong></span>
+          </div>
+        </div>
+
+        <!-- 카드 3: 이달의 로봇청소기 월 1회 정기 대청소 당번 -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Monthly Duty</span>
+              <span id="badge-month-odd-even" class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-emerald-100 text-emerald-700">11월 (홀수월)</span>
+            </div>
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-xl flex-shrink-0">
+                <i class="fa-solid fa-broom"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base leading-tight">로봇청소기 월 1회 정기 대청소</h3>
+                <p class="text-xs text-slate-500 mt-0.5">센서·브러시·먼지통 종합 세척</p>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center my-3">
+              <p class="text-xs text-slate-500 mb-1">이달의 종합 청소 담당자</p>
+              <p id="card3-assigned-name" class="text-xl sm:text-2xl font-extrabold text-blue-600">최현준 💼</p>
+              <p id="card3-rule-desc" class="text-[11px] text-slate-400 mt-1">홀수월: 최현준 / 짝수월: 조아영</p>
+            </div>
+          </div>
+          <div class="pt-2">
+            <button onclick="toggleDutyCompleted('robot_deep')" id="btn-duty-robot-deep" class="w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition flex items-center justify-center space-x-2 bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700">
+              <i class="fa-regular fa-circle-check"></i>
+              <span id="btn-duty-robot-deep-text">이달 대청소 완료 체크</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 주요 일정 & 3대 필수 기념일 고정 카드 (2컬럼) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        
+        <!-- 급여 및 입금일 & 공동 생활비 자동이체 (이월 금지) -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base">급여일 및 생활비 이체 일정</h3>
+            </div>
+            <span class="text-xs bg-rose-50 text-rose-600 font-bold px-2.5 py-1 rounded-full border border-rose-100">이월 절대 금지 ⚠️</span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- 조아영 급여일 -->
+            <div class="flex items-center justify-between p-3.5 bg-pink-50/60 rounded-2xl border border-pink-100">
+              <div class="flex items-center space-x-3">
+                <span class="w-8 h-8 rounded-full bg-pink-500 text-white font-bold text-xs flex items-center justify-center">아영</span>
+                <div>
+                  <p class="text-xs font-semibold text-slate-800">조아영 급여 및 입금일</p>
+                  <p class="text-[11px] text-pink-600 font-medium">매월 16일</p>
+                </div>
+              </div>
+              <span id="dday-ayoung-pay" class="text-xs font-extrabold text-pink-600 bg-white px-2.5 py-1 rounded-xl shadow-xs">D-Day</span>
+            </div>
+
+            <!-- 최현준 급여일 -->
+            <div class="flex items-center justify-between p-3.5 bg-blue-50/60 rounded-2xl border border-blue-100">
+              <div class="flex items-center space-x-3">
+                <span class="w-8 h-8 rounded-full bg-blue-500 text-white font-bold text-xs flex items-center justify-center">현준</span>
+                <div>
+                  <p class="text-xs font-semibold text-slate-800">최현준 급여 및 입금일</p>
+                  <p class="text-[11px] text-blue-600 font-medium">매월 21일</p>
+                </div>
+              </div>
+              <span id="dday-hyunjun-pay" class="text-xs font-extrabold text-blue-600 bg-white px-2.5 py-1 rounded-xl shadow-xs">D-Day</span>
+            </div>
+
+            <!-- 공동 생활비 통장 자동이체일 (매월 25일) -->
+            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl border border-indigo-200">
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-sm shadow-sm">
+                  <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+                <div>
+                  <p class="text-xs sm:text-sm font-bold text-indigo-950">공동 생활비 통장 자동이체일</p>
+                  <p class="text-[11px] text-indigo-600 font-semibold">매월 25일 고정 (각자 공동통장으로 자동이체)</p>
+                </div>
+              </div>
+              <span id="dday-common-transfer" class="text-sm font-black text-indigo-700 bg-white px-3 py-1.5 rounded-xl shadow-sm border border-indigo-100">D-Day</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3대 필수 기념일 고정 카드 -->
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-sm">
+                  <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base">3대 필수 기념일</h3>
+              </div>
+              <span class="text-xs bg-indigo-50 text-indigo-700 font-bold px-2.5 py-1 rounded-full border border-indigo-100">절대 잊지 않기 💖</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <!-- 서로의 생일 -->
+              <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 text-center flex flex-col items-center justify-center">
+                <span class="text-2xl mb-1">🎂</span>
+                <p class="text-xs font-bold text-slate-800">서로의 생일</p>
+                <p class="text-[10px] text-slate-500 mt-0.5">선물 & 맛있는 식사</p>
+                <span class="mt-2 text-[10px] font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-full">필수 챙기기</span>
+              </div>
+
+              <!-- 크리스마스 -->
+              <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 text-center flex flex-col items-center justify-center">
+                <span class="text-2xl mb-1">🎄</span>
+                <p class="text-xs font-bold text-slate-800">크리스마스</p>
+                <p class="text-[10px] text-slate-500 mt-0.5">매년 12월 25일</p>
+                <span id="dday-xmas" class="mt-2 text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">D-Day</span>
+              </div>
+
+              <!-- 결혼기념일 -->
+              <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 text-center flex flex-col items-center justify-center">
+                <span class="text-2xl mb-1">💍</span>
+                <p class="text-xs font-bold text-slate-800">결혼기념일</p>
+                <p class="text-[10px] text-slate-500 mt-0.5">가장 특별한 하루</p>
+                <span class="mt-2 text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">기념 데이트</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border border-pink-100 text-xs text-pink-900 flex items-center space-x-2">
+            <i class="fa-solid fa-heart text-pink-500"></i>
+            <span><strong>약속:</strong> 아무리 바빠도 3대 기념일은 미리 상의하고 서로를 위해 정성을 다합니다.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 주간/격주 가사 체크리스트 (클라우드 DB 실시간 동기화) -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-sm">
+                <i class="fa-solid fa-list-check"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base">주간 / 격주 가사 체크리스트</h3>
+              <span id="checklist-progress-text" class="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full">0/6 완료</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">체크 시 구글 시트 Checklist 탭에 실시간 동기화됩니다.</p>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="resetChecklistAll()" class="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition flex items-center space-x-1.5">
+              <i class="fa-solid fa-arrows-rotate text-slate-400"></i>
+              <span>이번 주 리셋</span>
+            </button>
+            <button onclick="promptAddChecklistItem()" class="px-3 py-1.5 text-xs font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 rounded-xl transition flex items-center space-x-1.5">
+              <i class="fa-solid fa-plus"></i>
+              <span>항목 추가</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 프로그레스 바 -->
+        <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+          <div id="checklist-progress-bar" class="bg-gradient-to-r from-teal-500 to-emerald-500 h-2.5 rounded-full transition-all duration-500 w-0"></div>
+        </div>
+
+        <!-- 체크리스트 아이템 컨테이너 -->
+        <div id="checklist-container" class="space-y-2.5 pt-2">
+          <!-- 동적 주입 -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- [탭 2] 공동생활 합의서 전문 (인쇄/PDF 최적화 뷰) -->
+    <!-- --------------------------------------------------------------------- -->
+    <div id="tab-agreement" class="tab-content hidden space-y-6">
+      
+      <!-- 인쇄 & 액션 바 (화면 전용) -->
+      <div class="no-print bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-stamp"></i>
+          </div>
+          <div>
+            <h2 class="font-bold text-slate-900 text-base">커플 공동생활 합의서 전문</h2>
+            <p class="text-xs text-slate-500">제정일: 2026년 11월 8일 (A4 인쇄 및 PDF 저장 지원)</p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-2 w-full sm:w-auto">
+          <button onclick="window.print()" class="w-full sm:w-auto px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-100 transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-print"></i>
+            <span>합의서 인쇄 / PDF 저장</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 합의서 본문 문서 뷰 (A4 최적화) -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm space-y-8 print-page">
+        
+        <!-- 문서 헤더 -->
+        <div class="text-center pb-6 border-b-2 border-slate-900">
+          <span class="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full mb-2">공식 문서</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">커플 공동생활 합의서</h1>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">제정일: 2026년 11월 8일 | 효력 발생일: 즉시</p>
+          <p class="text-xs text-slate-600 max-w-xl mx-auto mt-3 leading-relaxed">
+            본 합의서는 서로 다른 환경에서 살아온 두 사람(최현준, 조아영)이 서로에 대한 깊은 존중과 신뢰를 바탕으로, 갈등을 지혜롭게 예방하고 행복한 공동생활을 지속하기 위해 제정한다.
+          </p>
+        </div>
+
+        <!-- [제1장. 성향 존중 및 소통 규칙] -->
+        <section class="space-y-4">
+          <div class="flex items-center space-x-2 border-b border-indigo-200 pb-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900">제1장. 성향 존중 및 소통 규칙</h2>
+          </div>
+
+          <!-- 조아영 & 최현준 성향 카드 그리드 -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- 조아영 카드 -->
+            <div class="bg-pink-50/40 rounded-2xl p-5 border border-pink-100 space-y-3">
+              <div class="flex items-center space-x-2">
+                <span class="px-2.5 py-1 bg-pink-500 text-white text-xs font-bold rounded-lg">조아영 (아영)</span>
+                <span class="text-xs text-pink-700 font-medium">따뜻한 공감과 배려</span>
+              </div>
+              <ul class="text-xs text-slate-700 space-y-2 leading-relaxed">
+                <li class="flex items-start space-x-2">
+                  <span class="text-pink-500 font-bold">♥</span>
+                  <span><strong>좋아하는 것:</strong> 집에서 편하게 뒹굴거리기 / 공감해 주고 따뜻한 말 건네기, 손잡고 걷기 / 타인과 어딘가 갈 때 사진 찍어 보내주기</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-pink-500 font-bold">★</span>
+                  <span><strong>원하는 것:</strong> 현준이 선크림 챙겨 바르고 옷 깔끔히 털어 입기 / 기분 나쁜 말·행동을 했을 때 그냥 넘어가지 말고 "잘했다·수고했다" 격려와 함께 서운한 점을 캐치해 말해 주기</span>
+                </li>
+                <li class="flex items-start space-x-2 text-rose-700 bg-rose-50/70 p-2 rounded-xl">
+                  <span class="font-bold">⚠️</span>
+                  <span><strong>싫어하는 것(주의):</strong> 같은 말 2번 이상 하게 만드는 것 / 불만을 그날 말하지 않고 쌓아두는 것 / 말을 왜곡하지 않고 그대로 전달하기 / 자기 말이 맞더라도 무조건 우기지 말고 가끔은 들어주기</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 최현준 카드 -->
+            <div class="bg-blue-50/40 rounded-2xl p-5 border border-blue-100 space-y-3">
+              <div class="flex items-center space-x-2">
+                <span class="px-2.5 py-1 bg-blue-600 text-white text-xs font-bold rounded-lg">최현준 (현준)</span>
+                <span class="text-xs text-blue-700 font-medium">개인 시간과 합리적 정돈</span>
+              </div>
+              <ul class="text-xs text-slate-700 space-y-2 leading-relaxed">
+                <li class="flex items-start space-x-2">
+                  <span class="text-blue-500 font-bold">♥</span>
+                  <span><strong>좋아하는 것:</strong> 취미생활(게임 등) 및 개인 작업하기 / 맛있는 음식 같이 만들어 먹기 / 집안일 함께 분담하기</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-blue-500 font-bold">★</span>
+                  <span><strong>원하는 것:</strong> 퇴근 후 개인 작업이나 취미생활 시간 보장해 주기(평일 노터치) / 주말 약속 없을 때 최소 한 끼는 집밥 해 먹기 / 화장실 볼일 후 물 내리고 변기 커버(오물 여부) 확인하기 / 불만 있으면 바로 말하기 & 공동비용 제때 내기(이월 금지) / 매월 생활비 및 개인별 지출·투자 내역 함께 결산하기</span>
+                </li>
+                <li class="flex items-start space-x-2 text-rose-700 bg-rose-50/70 p-2 rounded-xl">
+                  <span class="font-bold">⚠️</span>
+                  <span><strong>싫어하는 것(주의):</strong> 물건을 제자리에 두지 않고 아무 데나 내팽개치기 / 집안에 새로운 물건을 들이거나 배치하기 전에 미리 말 안 하는 것 / 연락(말) 없이 집에 안 들어오는 것</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- 시간 균형 규칙 -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <h4 class="text-xs font-bold text-slate-900 mb-2 flex items-center space-x-1.5">
+              <i class="fa-solid fa-clock text-indigo-600"></i>
+              <span>[시간 균형 규칙]</span>
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700">
+              <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+                <span class="font-bold text-indigo-600">1. 평일 저녁:</span> 각자 취미/작업 시간 노터치 보장
+              </div>
+              <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+                <span class="font-bold text-indigo-600">2. 식사 시간:</span> 밥 먹을 때는 함께 수다 떨고 대화하기
+              </div>
+              <div class="bg-white p-2.5 rounded-xl border border-slate-100">
+                <span class="font-bold text-indigo-600">3. 주말 여가:</span> 주말(토/일) 중 최소 하루는 함께 시간 보내기
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- [제2장. 가사 분담 및 공간 골든 룰] -->
+        <section class="space-y-4">
+          <div class="flex items-center space-x-2 border-b border-indigo-200 pb-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">2</span>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900">제2장. 가사 분담 및 공간 골든 룰</h2>
+          </div>
+
+          <!-- 가사 분담 테이블 -->
+          <div class="overflow-x-auto rounded-2xl border border-slate-200">
+            <table class="w-full text-xs text-left text-slate-700">
+              <thead class="text-[11px] text-slate-600 uppercase bg-slate-100/80">
+                <tr>
+                  <th scope="col" class="px-4 py-3 w-28">구분</th>
+                  <th scope="col" class="px-4 py-3 w-32">주담당자</th>
+                  <th scope="col" class="px-4 py-3">세부 실행 원칙 및 예외 규정</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 bg-white">
+                <tr>
+                  <td class="px-4 py-3 font-bold text-slate-900">요리</td>
+                  <td class="px-4 py-3"><span class="bg-blue-100 text-blue-700 font-semibold px-2 py-0.5 rounded-md">최현준 주담당</span></td>
+                  <td class="px-4 py-3">조아영은 하고 싶을 때 자율 참여. 손님 대접 요리 및 주말 1끼 이상 집밥 함께 만들어 먹기.</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-bold text-slate-900">설거지</td>
+                  <td class="px-4 py-3"><span class="bg-pink-100 text-pink-700 font-semibold px-2 py-0.5 rounded-md">조아영 주담당</span></td>
+                  <td class="px-4 py-3">식기세척기 적극 활용. 손님 대접 시 및 식기세척기 최종 가동은 최현준 주담당. 일반 설거지는 조아영이 하되 필요시 최현준 분담.</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-bold text-slate-900">음식물 쓰레기</td>
+                  <td class="px-4 py-3"><span class="bg-slate-100 text-slate-700 font-semibold px-2 py-0.5 rounded-md">발생 즉시 확인자</span></td>
+                  <td class="px-4 py-3">발생 즉시 확인한 사람이 음식물처리기에 투입. 처리기는 끄지 않고 24시간 상시 자동 가동(월 전기료 약 5,000원). 건조된 결과물은 일반쓰레기로 배출.</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-bold text-slate-900">빨래 & 건조</td>
+                  <td class="px-4 py-3"><span class="bg-purple-100 text-purple-700 font-semibold px-2 py-0.5 rounded-md">공동 협력</span></td>
+                  <td class="px-4 py-3">속옷·양말·면티·수건은 함께 세탁 후 면류만 골라 건조기 일괄 가동. <span class="text-rose-600 font-bold">건조가 끝난 빨래는 두 사람이 함께 개고 각자 수납.</span> 기타 개인 의류는 각자 분류 세탁.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 공간 수납 골든 룰 4원칙 -->
+          <div class="bg-amber-50/60 rounded-2xl p-4 sm:p-5 border border-amber-200/80 space-y-2.5">
+            <h4 class="text-xs font-bold text-amber-900 flex items-center space-x-2">
+              <i class="fa-solid fa-house-chimney-crack text-amber-600"></i>
+              <span>[공간 수납 골든 룰 4대 원칙]</span>
+            </h4>
+            <ol class="text-xs text-slate-800 space-y-2 list-decimal list-inside pl-1 leading-relaxed">
+              <li><strong>귀가 즉시 정리:</strong> 외출복은 귀가 즉시 지정된 옷장에 넣고, 벗은 속옷 및 세탁물은 즉시 빨래통에 넣는다.</li>
+              <li><strong>소파 위 의류 제한:</strong> 소파나 의자 등 외부에 걸쳐둘 수 있는 옷은 <strong>간편한 잠옷 또는 트레이닝복 단 1벌</strong>만 허용한다.</li>
+              <li><strong>택배 언박싱 철칙:</strong> 모든 택배는 현관 밖에서 개봉하여 <strong>겉박스(외박스)는 무조건 문 앞</strong>에 두고, 내용물과 <strong>속박스(내박스)만 집 안쪽</strong>으로 반입한다.</li>
+              <li><strong>새 물건 사전 합의:</strong> 집안에 새로운 물건을 들이거나 가구 배치를 변경하기 전 반드시 상대방과 사전 합의한다.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- [제3장. 생활비 및 세부 지출 기준] -->
+        <section class="space-y-4">
+          <div class="flex items-center space-x-2 border-b border-indigo-200 pb-2">
+            <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">3</span>
+            <h2 class="text-lg sm:text-xl font-bold text-slate-900">제3장. 생활비 및 세부 지출 기준</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+              <span class="font-bold text-indigo-700">🗓️ 일정 및 자동이체:</span>
+              <p>아영 급여(16일), 현준 급여(21일) 후 <strong>매월 25일 공동 계좌로 자동이체</strong>하며 절대로 이월하지 않는다.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+              <span class="font-bold text-indigo-700">🚗 차량 유지비 & 장거리 톨비:</span>
+              <p>기본 유지비(보험·세금·정비·개인주유)는 개인 부담. 함께 이동 시 <strong>주차비는 공동카드</strong>, <strong>장거리 통행료(톨비)는 카운트하여 공동 계좌에서 개인 계좌로 정산 지급</strong>한다.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+              <span class="font-bold text-indigo-700">📺 OTT 구독료:</span>
+              <p>넷플릭스, 디즈니플러스는 공동 비용으로 처리한다.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+              <span class="font-bold text-indigo-700">💊 개인 약 및 영양제:</span>
+              <p>각자 복용하는 개인 의약품 및 영양제는 전액 개인 지출로 처리한다.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+              <span class="font-bold text-indigo-700">🛋️ 소형 가전 및 가구:</span>
+              <p>사전 합의 후 공동 생활비 또는 공동 비용에서 동등하게 각출한다.</p>
+            </div>
+
+            <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 space-y-1">
+              <span class="font-bold text-indigo-700">👨‍👩‍👦 양가 부모님 챙기기:</span>
+              <p>명절 및 생신 등 부모님 지원 기준은 추후 공동 합의를 거쳐 확정(유보)한다.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 서명 날인 영역 -->
+        <div class="pt-8 border-t-2 border-slate-900 mt-8">
+          <p class="text-center text-xs text-slate-600 mb-6 font-medium">
+            위 합의 사항을 성실하게 준수할 것을 약속하며, 본 합의서를 상호 확인 및 서명합니다.<br>
+            <strong>2026년 11월 8일</strong>
+          </p>
+
+          <div class="grid grid-cols-2 gap-8 max-w-lg mx-auto">
+            <!-- 최현준 서명란 -->
+            <div class="text-center space-y-2 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+              <p class="text-xs text-slate-500">서약자 (남)</p>
+              <p class="text-base font-bold text-slate-900">최 현 준</p>
+              <div class="h-12 border-b border-dashed border-slate-400 flex items-center justify-center text-xs text-slate-400 italic">
+                (인 또는 서명)
+              </div>
+            </div>
+
+            <!-- 조아영 서명란 -->
+            <div class="text-center space-y-2 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+              <p class="text-xs text-slate-500">서약자 (여)</p>
+              <p class="text-base font-bold text-slate-900">조 아 영</p>
+              <div class="h-12 border-b border-dashed border-slate-400 flex items-center justify-center text-xs text-slate-400 italic">
+                (인 또는 서명)
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- [탭 3] 공동생활비 & 월말 결산 가계부 (구글 시트 연동) -->
+    <!-- --------------------------------------------------------------------- -->
+    <div id="tab-budget" class="tab-content hidden space-y-6">
+      
+      <!-- 상단 컨트롤: 연월 선택기 & 신규 입력 버튼 -->
+      <div class="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- 연월 이동 컨트롤 -->
+        <div class="flex items-center space-x-2">
+          <button onclick="changeMonth(-1)" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          
+          <div class="flex items-center space-x-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl">
+            <i class="fa-regular fa-calendar text-indigo-600 text-sm"></i>
+            <input type="month" id="budget-month-picker" onchange="onMonthPickerChange()" class="bg-transparent font-bold text-slate-900 text-sm sm:text-base outline-none cursor-pointer">
+          </div>
+
+          <button onclick="changeMonth(1)" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition">
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+
+          <button onclick="resetToCurrentMonth()" class="px-2.5 py-1.5 text-xs text-slate-500 hover:text-slate-800 bg-slate-100 rounded-xl transition">
+            오늘
+          </button>
+        </div>
+
+        <!-- 액션 버튼 그룹 -->
+        <div class="flex items-center space-x-2 w-full sm:w-auto">
+          <button onclick="toggleTollSection()" class="flex-1 sm:flex-none px-4 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs rounded-xl border border-rose-200 transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-car-side"></i>
+            <span>장거리 톨비 계산기</span>
+          </button>
+
+          <button onclick="openTxModal()" class="flex-1 sm:flex-none px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-100 transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-plus"></i>
+            <span>내역 추가</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 상단 요약 KPI 대시보드 (총수입 - 총지출 = 잔여 자금) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- KPI 1: 2인 총수입 -->
+        <div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">2인 총수입 (월급+투잡)</span>
+            <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p id="kpi-total-income" class="text-xl sm:text-2xl font-black text-slate-900">0원</p>
+            <div class="flex items-center space-x-2 mt-1 text-[11px] text-slate-500">
+              <span>현준: <b id="kpi-income-hyunjun" class="text-blue-600">0원</b></span>
+              <span>·</span>
+              <span>아영: <b id="kpi-income-ayoung" class="text-pink-600">0원</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 2: 공동 지출 & 공동 저축 -->
+        <div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">공동 지출 & 공동 목돈</span>
+            <div class="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p id="kpi-common-total" class="text-xl sm:text-2xl font-black text-indigo-600">0원</p>
+            <div class="flex items-center space-x-2 mt-1 text-[11px] text-slate-500">
+              <span>생활비: <b id="kpi-common-living">0원</b></span>
+              <span>·</span>
+              <span>공동목돈: <b id="kpi-common-savings">0원</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 3: 개인 지출 & 투자 (현준 / 아영) -->
+        <div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">개인 지출 & 자산/투자</span>
+            <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-user-lock"></i>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p id="kpi-personal-total" class="text-xl sm:text-2xl font-black text-purple-600">0원</p>
+            <div class="flex items-center space-x-2 mt-1 text-[11px] text-slate-500">
+              <span>현준: <b id="kpi-personal-hyunjun" class="text-blue-600">0원</b></span>
+              <span>·</span>
+              <span>아영: <b id="kpi-personal-ayoung" class="text-pink-600">0원</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI 4: 최종 잔여 자금 (총수입 - 총지출) -->
+        <div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">최종 잔여 자금 (수입 - 지출)</span>
+            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p id="kpi-balance" class="text-xl sm:text-2xl font-black text-emerald-600">0원</p>
+            <div class="flex items-center space-x-1.5 mt-1 text-[11px] text-slate-500">
+              <span id="kpi-balance-rate" class="font-bold text-emerald-600">저축/잉여율 0%</span>
+              <span class="text-slate-400">달성</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- [스페셜 전용 기능] 장거리 통행료(톨비) 정산 카운터 영역 -->
+      <div id="section-toll-counter" class="bg-gradient-to-br from-rose-50/70 via-white to-pink-50/40 rounded-3xl p-6 border border-rose-200/80 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-xl bg-rose-500 text-white flex items-center justify-center text-sm shadow-sm">
+                <i class="fa-solid fa-road"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 text-base">장거리 통행료(톨비) 정산 카운터</h3>
+              <span class="text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full font-bold">공동 정산 대상</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">
+              함께 장거리 이동 시 발생한 고속도로 통행료를 기록하면, <strong>공동계좌에서 개인계좌로 이체해 줄 정산 총액</strong>을 자동 계산합니다.
+            </p>
+          </div>
+
+          <!-- 정산 예정액 하이라이트 박스 -->
+          <div class="bg-white p-4 rounded-2xl border border-rose-200 shadow-sm text-right sm:min-w-[200px]">
+            <p class="text-[11px] font-semibold text-rose-600">이달 공동계좌 → 개인 정산 총액</p>
+            <p id="toll-pending-amount" class="text-xl sm:text-2xl font-black text-rose-600">0원</p>
+            <p id="toll-settled-info" class="text-[10px] text-slate-400 mt-0.5">정산 완료: 0원</p>
+          </div>
+        </div>
+
+        <!-- 톨비 간편 입력 인라인 폼 -->
+        <form onsubmit="handleTollSubmit(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 pt-2">
+          <div class="sm:col-span-3">
+            <input type="date" id="toll-date" required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-xl focus:border-rose-500 focus:outline-none">
+          </div>
+          <div class="sm:col-span-4">
+            <input type="text" id="toll-desc" placeholder="행선지/내역 (예: 강릉 왕복, 처가 방문)" required class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-xl focus:border-rose-500 focus:outline-none">
+          </div>
+          <div class="sm:col-span-3">
+            <input type="number" id="toll-amount" placeholder="톨비 금액 (원)" required min="0" step="100" class="w-full text-xs p-2.5 bg-white border border-slate-200 rounded-xl focus:border-rose-500 focus:outline-none">
+          </div>
+          <div class="sm:col-span-2">
+            <button type="submit" class="w-full py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center justify-center space-x-1">
+              <i class="fa-solid fa-plus"></i>
+              <span>톨비 등록</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- 톨비 내역 리스트 -->
+        <div class="overflow-x-auto rounded-2xl border border-rose-100 bg-white">
+          <table class="w-full text-xs text-left text-slate-700">
+            <thead class="text-[11px] text-slate-500 uppercase bg-slate-50 border-b border-rose-100">
+              <tr>
+                <th scope="col" class="px-4 py-2.5 w-24">날짜</th>
+                <th scope="col" class="px-4 py-2.5">행선지 / 내역</th>
+                <th scope="col" class="px-4 py-2.5 text-right w-28">금액</th>
+                <th scope="col" class="px-4 py-2.5 text-center w-28">정산 상태</th>
+                <th scope="col" class="px-4 py-2.5 text-center w-16">관리</th>
+              </tr>
+            </thead>
+            <tbody id="toll-list-tbody" class="divide-y divide-slate-100">
+              <!-- 동적 톨비 행 주입 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 거래 내역 필터 & 검색 & 테이블 -->
+      <div class="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-sm space-y-4">
+        
+        <!-- 필터 바 -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          
+          <!-- 주체 필터 버튼 그룹 -->
+          <div class="flex flex-wrap gap-1.5" id="tx-filter-group">
+            <button onclick="setTxFilter('all')" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white" data-filter="all">전체</button>
+            <button onclick="setTxFilter('income')" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="income">수입</button>
+            <button onclick="setTxFilter('common')" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="common">공동 생활비</button>
+            <button onclick="setTxFilter('common_save')" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="common_save">공동 목돈</button>
+            <button onclick="setTxFilter('hyunjun')" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="hyunjun">최현준 개인</button>
+            <button onclick="setTxFilter('ayoung')" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200" data-filter="ayoung">조아영 개인</button>
+          </div>
+
+          <!-- 검색 & CSV 다운로드 -->
+          <div class="flex items-center space-x-2">
+            <div class="relative flex-grow sm:flex-grow-0">
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+              <input type="text" id="tx-search-input" oninput="renderTransactions()" placeholder="내역 / 메모 검색..." class="text-xs pl-8 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none w-full sm:w-48">
+            </div>
+
+            <button onclick="exportToCsv()" class="p-2 text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-xl transition text-xs font-semibold" title="CSV 다운로드">
+              <i class="fa-solid fa-download"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 거래 내역 테이블 -->
+        <div class="overflow-x-auto rounded-2xl border border-slate-200">
+          <table class="w-full text-xs text-left text-slate-700">
+            <thead class="text-[11px] text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+              <tr>
+                <th scope="col" class="px-4 py-3 w-24">날짜</th>
+                <th scope="col" class="px-4 py-3 w-20">주체</th>
+                <th scope="col" class="px-4 py-3">카테고리</th>
+                <th scope="col" class="px-4 py-3">메모 / 내용</th>
+                <th scope="col" class="px-4 py-3 text-right w-32">금액</th>
+                <th scope="col" class="px-4 py-3 text-center w-16">삭제</th>
+              </tr>
+            </thead>
+            <tbody id="tx-table-tbody" class="divide-y divide-slate-100 bg-white">
+              <!-- 동적 거래 내역 행 주입 -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 거래 내역 없음 안내 -->
+        <div id="tx-empty-state" class="hidden py-12 text-center text-slate-400">
+          <i class="fa-regular fa-clipboard text-3xl mb-2 text-slate-300"></i>
+          <p class="text-xs">해당 월에 등록된 거래 내역이 없습니다.</p>
+          <button onclick="openTxModal()" class="mt-2 text-xs font-semibold text-indigo-600 hover:underline">
+            + 첫 번째 내역 추가하기
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- [탭 4] AI 객관적 월말 결산 프롬프트 생성기 -->
+    <!-- --------------------------------------------------------------------- -->
+    <div id="tab-ai" class="tab-content hidden space-y-6">
+      
+      <!-- 상단 철학 및 목적 배너 -->
+      <div class="bg-gradient-to-r from-purple-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+        <div class="relative z-10 space-y-3">
+          <div class="inline-flex items-center space-x-2 bg-pink-500/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-pink-300 border border-pink-400/30">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>상호 격려와 건설적 재무 코칭</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            AI 객관적 월말 결산 프롬프트 생성기 🤖
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            결산의 본질은 "서로를 감시하거나 추궁하는 것"이 아니라, <strong>한 달 동안 치열하게 살아온 서로의 노고를 인정하고, AI의 제3자적 객관적 시선으로 현명한 재무 피드백을 받는 것</strong>입니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 컨트롤 & 클립보드 복사 바 -->
+      <div class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-slate-900 text-sm sm:text-base flex items-center space-x-2">
+            <span id="ai-target-month-label" class="text-indigo-600">2026년 11월</span>
+            <span>데이터 자동 분석 프롬프트</span>
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">선택된 월의 수입, 지출, 톨비, 잉여자금 데이터를 마크다운으로 자동 조합했습니다.</p>
+        </div>
+
+        <div class="flex items-center space-x-2 w-full sm:w-auto">
+          <button onclick="copyAiPrompt()" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-pink-500 to-indigo-600 hover:from-pink-600 hover:to-indigo-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-100 transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-clipboard-check text-sm"></i>
+            <span>프롬프트 클립보드 복사</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 프롬프트 미리보기 에어리어 -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Generated Prompt Preview</span>
+          <div class="flex items-center space-x-2 text-xs">
+            <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition font-medium flex items-center space-x-1">
+              <span>ChatGPT</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+            <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition font-medium flex items-center space-x-1">
+              <span>Claude</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+            <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition font-medium flex items-center space-x-1">
+              <span>Gemini</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <textarea id="ai-prompt-textarea" readonly class="w-full h-96 p-4 font-mono text-xs text-slate-800 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none resize-none leading-relaxed select-all"></textarea>
+        </div>
+
+        <!-- 4대 피드백 안내 카드 -->
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
+          <div class="p-3 bg-pink-50/50 rounded-2xl border border-pink-100 text-xs">
+            <p class="font-bold text-pink-700 mb-1">1. 칭찬 & 수고 격려</p>
+            <p class="text-slate-600 text-[11px]">한 달간 함께 열심히 일하고 공동생활을 유지한 서로를 따뜻하게 칭찬</p>
+          </div>
+          <div class="p-3 bg-blue-50/50 rounded-2xl border border-blue-100 text-xs">
+            <p class="font-bold text-blue-700 mb-1">2. 공동 생활비 분석</p>
+            <p class="text-slate-600 text-[11px]">식비, 관리비 등 항목별 지출 적정성 및 숨은 절약 포인트 탐색</p>
+          </div>
+          <div class="p-3 bg-purple-50/50 rounded-2xl border border-purple-100 text-xs">
+            <p class="font-bold text-purple-700 mb-1">3. 지출/투자 밸런스</p>
+            <p class="text-slate-600 text-[11px]">비난 없는 시선으로 각자의 지출과 자산 형성(저축/투자) 비율 점검</p>
+          </div>
+          <div class="p-3 bg-emerald-50/50 rounded-2xl border border-emerald-100 text-xs">
+            <p class="font-bold text-emerald-700 mb-1">4. 다음 달 실천 제안</p>
+            <p class="text-slate-600 text-[11px]">부담 없이 함께 시도해 볼 수 있는 현실적이고 알뜰한 3가지 미션</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 3. 모바일 하단 플로팅 탭 네비게이션 (Mobile Bottom Bar) -->
+  <!-- ========================================================================= -->
+  <nav class="no-print md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 px-2 py-1 shadow-lg">
+    <div class="flex justify-around items-center h-14">
+      <button onclick="switchTab('dashboard')" id="nav-mobile-dashboard" class="flex flex-col items-center justify-center flex-1 py-1 text-indigo-600 font-bold transition">
+        <i class="fa-solid fa-calendar-check text-base"></i>
+        <span class="text-[10px] mt-1">당번</span>
+      </button>
+
+      <button onclick="switchTab('agreement')" id="nav-mobile-agreement" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium transition">
+        <i class="fa-solid fa-file-contract text-base"></i>
+        <span class="text-[10px] mt-1">합의서</span>
+      </button>
+
+      <button onclick="switchTab('budget')" id="nav-mobile-budget" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium transition">
+        <i class="fa-solid fa-wallet text-base"></i>
+        <span class="text-[10px] mt-1">가계부</span>
+      </button>
+
+      <button onclick="switchTab('ai')" id="nav-mobile-ai" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium transition">
+        <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
+        <span class="text-[10px] mt-1">AI결산</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- 4. 모달: 거래 내역 추가 모달 (Transaction Modal) -->
+  <!-- ========================================================================= -->
+  <div id="modal-tx" class="no-print fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto space-y-4">
+      
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+          <i class="fa-solid fa-coins text-indigo-600"></i>
+          <span>수입 / 지출 내역 등록</span>
+        </h3>
+        <button onclick="closeTxModal()" class="text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleTxSubmit(event)" class="space-y-4">
+        
+        <!-- 주체 선택 버튼 그룹 (공동 / 현준 / 아영) -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1.5">지출/수입 주체</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button type="button" onclick="setTxWho('공동')" id="who-btn-common" class="py-2.5 rounded-xl text-xs font-bold border transition bg-indigo-600 text-white border-indigo-600">공동 생활</button>
+            <button type="button" onclick="setTxWho('현준')" id="who-btn-hyunjun" class="py-2.5 rounded-xl text-xs font-bold border transition bg-slate-50 text-slate-700 border-slate-200">최현준</button>
+            <button type="button" onclick="setTxWho('아영')" id="who-btn-ayoung" class="py-2.5 rounded-xl text-xs font-bold border transition bg-slate-50 text-slate-700 border-slate-200">조아영</button>
+          </div>
+          <input type="hidden" id="tx-who" value="공동">
+        </div>
+
+        <!-- 카테고리 선택 -->
+        <div>
+          <label for="tx-category" class="block text-xs font-semibold text-slate-700 mb-1.5">카테고리</label>
+          <select id="tx-category" required class="w-full text-xs p-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none">
+            <!-- 자바스크립트로 주체에 따라 카테고리 옵션 동적 갱신 -->
+          </select>
+        </div>
+
+        <!-- 금액 입력 및 빠른 증액 버튼 -->
+        <div>
+          <label for="tx-amount" class="block text-xs font-semibold text-slate-700 mb-1.5">금액 (원)</label>
+          <div class="relative">
+            <input type="number" id="tx-amount" placeholder="0" required min="0" step="100" class="w-full text-sm font-bold p-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none">
+            <span class="absolute right-3 top-3 text-xs text-slate-400">원</span>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-2">
+            <button type="button" onclick="addAmountToInput(10000)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-semibold">+1만</button>
+            <button type="button" onclick="addAmountToInput(50000)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-semibold">+5만</button>
+            <button type="button" onclick="addAmountToInput(100000)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-semibold">+10만</button>
+            <button type="button" onclick="addAmountToInput(500000)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-semibold">+50만</button>
+            <button type="button" onclick="addAmountToInput(1000000)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-semibold">+100만</button>
+            <button type="button" onclick="document.getElementById('tx-amount').value = ''" class="px-2 py-1 bg-rose-50 text-rose-600 rounded-lg text-[11px] font-semibold ml-auto">초기화</button>
+          </div>
+        </div>
+
+        <!-- 날짜 및 메모 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="tx-date" class="block text-xs font-semibold text-slate-700 mb-1.5">날짜</label>
+            <input type="date" id="tx-date" required class="w-full text-xs p-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none">
+          </div>
+          <div>
+            <label for="tx-memo" class="block text-xs font-semibold text-slate-700 mb-1.5">메모 / 내용 (선택)</label>
+            <input type="text" id="tx-memo" placeholder="예: 이마트 장보기, 넷플릭스" class="w-full text-xs p-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none">
+          </div>
+        </div>
+
+        <!-- 전송 버튼 -->
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-md shadow-indigo-100 transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-check"></i>
+            <span>내역 저장하기</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 5. 모달: 구글 시트 연동 설정 모달 (Settings Modal) -->
+  <!-- ========================================================================= -->
+  <div id="modal-settings" class="no-print fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-lg p-6 shadow-2xl border border-slate-100 space-y-4">
+      
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+          <i class="fa-solid fa-gear text-indigo-600"></i>
+          <span>구글 시트 연동 설정 (Google Apps Script)</span>
+        </h3>
+        <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3">
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Google Apps Script의 <strong>웹 앱 배포 URL</strong>을 입력하면 구글 드라이브(5TB) 스프레드시트와 실시간으로 연동되어 영구 저장됩니다. 미입력 시에는 <strong>로컬 브라우저(LocalStorage)</strong>에 안전하게 저장됩니다.
+        </p>
+
+        <div>
+          <label for="input-gas-url" class="block text-xs font-semibold text-slate-700 mb-1.5">Apps Script 웹 앱 URL</label>
+          <input type="url" id="input-gas-url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full text-xs p-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-indigo-500 focus:outline-none">
+        </div>
+
+        <!-- 연결 테스트 결과 표시창 -->
+        <div id="settings-test-result" class="hidden p-3 rounded-xl text-xs"></div>
+
+        <div class="flex items-center space-x-2 pt-2">
+          <button type="button" onclick="testGasConnection()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
+            <i id="btn-test-icon" class="fa-solid fa-plug"></i>
+            <span>연결 테스트</span>
+          </button>
+          
+          <button type="button" onclick="saveGasSettings()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-save"></i>
+            <span>설정 저장하기</span>
+          </button>
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <button type="button" onclick="clearGasUrl()" class="text-rose-500 hover:underline">연동 해제 (로컬 모드로 전환)</button>
+          <button type="button" onclick="openGuideModal(); closeSettingsModal();" class="text-indigo-600 hover:underline">배포 가이드 보기 →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 6. 모달: 배포 및 연동 가이드 모달 (Guide Modal) -->
+  <!-- ========================================================================= -->
+  <div id="modal-guide" class="no-print fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl w-full max-w-2xl p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto space-y-4">
+      
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+          <i class="fa-solid fa-book-open text-indigo-600"></i>
+          <span>구글 시트 연동 Step-by-Step 가이드</span>
+        </h3>
+        <button onclick="closeGuideModal()" class="text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs text-slate-700 leading-relaxed">
+        
+        <div class="p-3 bg-indigo-50/70 rounded-2xl border border-indigo-100">
+          <p class="font-bold text-indigo-900 mb-1">💡 3분 안에 끝나는 구글 시트 연동</p>
+          <p>구글 스프레드시트에 포함된 `Code.gs` 코드를 붙여넣기만 하면 무료 5TB 구글 드라이브가 영구 DB로 변신합니다.</p>
+        </div>
+
+        <ol class="space-y-3 list-decimal list-inside pl-1">
+          <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <strong>스프레드시트 생성:</strong> 구글 드라이브에서 <strong>새 Google 스프레드시트</strong>를 만듭니다. (이름: <code>[공동생활] 가계부DB</code> 추천)
+          </li>
+          <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <strong>Apps Script 열기:</strong> 상단 메뉴에서 <code>확장 프로그램</code> &gt; <code>Apps Script</code>를 클릭합니다.
+          </li>
+          <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <strong>Code.gs 붙여넣기:</strong> 기본 코드를 모두 지우고, 프로젝트 파일에 제공된 <code>Code.gs</code> 전체 코드를 복사하여 붙여넣고 저장(Ctrl+S)합니다.
+          </li>
+          <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <strong>setupSheets() 1회 실행:</strong> 상단 실행 함수 드롭다운에서 <code>setupSheets</code>를 선택 후 <code>실행</code> 버튼을 누릅니다. (권한 검토 팝업 시 [고급] &gt; [안전하지 않음으로 이동] 승인)
+            <p class="text-[11px] text-emerald-700 mt-1 font-semibold">→ 실행 즉시 시트에 Transactions, Tolls, Checklist 3개 탭과 헤더가 자동 생성됩니다!</p>
+          </li>
+          <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <strong>웹 앱 배포 (중요):</strong> 우측 상단 파란색 <code>배포</code> &gt; <code>새 배포</code>를 누르고, 유형 선택(톱니바퀴)에서 <strong>웹 앱</strong>을 선택합니다.
+            <div class="mt-1.5 pl-2 space-y-1 text-slate-600">
+              <p>• 설명: <code>v1.0</code></p>
+              <p>• 다음 사용자 권한으로 실행: <strong>나(내 계정)</strong></p>
+              <p>• 액세스 권한이 있는 사용자: <strong class="text-rose-600">모든 사용자 (Anyone)</strong> <span class="text-[10px] text-slate-400">(로그인 없이 커플 간 데이터 동기화에 필수)</span></p>
+            </div>
+          </li>
+          <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+            <strong>배포 URL 복사 및 포털에 등록:</strong> 생성된 웹 앱 URL(<code>https://script.google.com/macros/s/.../exec</code>)을 복사하여 우리 집 포털 상단 [설정 ⚙️] 창에 붙여넣고 저장합니다!
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 컨테이너 -->
+  <div id="toast-container" class="no-print fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+  <!-- ========================================================================= -->
+  <!-- 7. 프론트엔드 핵심 비즈니스 로직 및 자바스크립트 -->
+  <!-- ========================================================================= -->
+  <script>
+    /**
+     * =========================================================================
+     * 전역 상태 및 데이터 스키마
+     * =========================================================================
+     */
+    const STATE = {
+      currentTab: 'dashboard',
+      selectedMonth: '2026-11', // 기본 선택 연월
+      gasUrl: localStorage.getItem('gas_api_url') || '',
+      isConnected: false,
+      txFilter: 'all',
+      transactions: [],
+      tolls: [],
+      checklist: []
+    };
+
+    // 카테고리 정의 매핑
+    const CATEGORIES = {
+      '공동': [
+        '[공동 생활비] 식비(장보기/외식)',
+        '[공동 생활비] 아파트 관리비(기본·주차·헬스·전기·수도·난방)',
+        '[공동 생활비] 생활소모품(휴지·세제·주방·화장실)',
+        '[공동 생활비] OTT(넷플릭스·디즈니+)',
+        '[공동 생활비] 차량 주차비·장거리 톨비',
+        '[공동 생활비] 소형 가전·가구 각출',
+        '[공동 목돈(조아영 관리)] 공동 투자',
+        '[공동 목돈(조아영 관리)] 공동 여행 자금'
+      ],
+      '현준': [
+        '[수입] 본업 월급',
+        '[수입] 투잡/알바',
+        '[개인 지출] 회사 생활비(식대·동료)',
+        '[개인 지출] 개인 취미·쇼핑',
+        '[개인 지출] 개인 약·영양제·의료비',
+        '[개인 지출] 차량 기본유지·통신비',
+        '[개인 자산] 개인 투자(주식 등)',
+        '[개인 자산] 개인 저축'
+      ],
+      '아영': [
+        '[수입] 본업 월급',
+        '[수입] 투잡/알바',
+        '[개인 지출] 회사 생활비(식대·동료)',
+        '[개인 지출] 개인 취미·쇼핑',
+        '[개인 지출] 개인 약·영양제·의료비',
+        '[개인 지출] 차량 기본유지·통신비',
+        '[개인 자산] 개인 투자(주식 등)',
+        '[개인 자산] 개인 저축'
+      ]
+    };
+
+    // 기본 가사 체크리스트 초기 템플릿
+    const DEFAULT_CHECKLIST = [
+      { key: 'chk_trash', label: '일요일 일반쓰레기 및 분리수거 배출 완료', checked: false },
+      { key: 'chk_laundry', label: '일요일 기본 빨래(속옷·양말·면티·수건) & 면류 건조기 가동 + 건조 후 빨래 함께 개기', checked: false },
+      { key: 'chk_vacuum', label: '주말 일반 진공청소기 1회 가동 (격주 교대 / 약속으로 부재 시 2주 연속 후 교대)', checked: false },
+      { key: 'chk_bath_master', label: '[2주 1회] 안방 화장실 청소 (최현준 전담)', checked: false },
+      { key: 'chk_bath_living', label: '[2주 1회] 바깥 거실 화장실 청소 (조아영 전담)', checked: false },
+      { key: 'chk_robot_deep', label: '[월 1회] 로봇청소기 센서·브러시·먼지통 종합 세척', checked: false }
+    ];
+
+    /**
+     * =========================================================================
+     * 초기화 및 이벤트 리스너
+     * =========================================================================
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. 현재 날짜 기준 연월 세팅
+      initDatesAndDuties();
+
+      // 2. 로컬 스토리지 데이터 로드 (오프라인 폴백용)
+      loadLocalStorageData();
+
+      // 3. 구글 시트 연동 여부 점검 및 원격 데이터 페치
+      updateSyncStatusUI();
+      if (STATE.gasUrl) {
+        fetchCloudData();
+      } else {
+        renderAll();
+      }
+
+      // 4. 모달 초기 폼 세팅
+      initTxModalCategory();
+    });
+
+    /**
+     * =========================================================================
+     * [탭 1] 당번 & 일정 자동 계산 비즈니스 로직
+     * =========================================================================
+     */
+    function initDatesAndDuties() {
+      const today = new Date();
+      
+      // 연월 입력창 기본값 설정
+      const curYear = today.getFullYear();
+      const curMonth = String(today.getMonth() + 1).padStart(2, '0');
+      const curDay = today.getDate();
+      const currentMonthStr = `${curYear}-${curMonth}`;
+      
+      STATE.selectedMonth = currentMonthStr;
+      document.getElementById('budget-month-picker').value = currentMonthStr;
+
+      // 상단 헤더 날짜 텍스트
+      const daysKor = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+      const dayOfWeekNum = today.getDay(); // 0: 일, 1: 월, ..., 6: 토
+      const dayOfWeekStr = daysKor[dayOfWeekNum];
+      document.getElementById('hero-date-display').textContent = `오늘: ${curYear}년 ${curMonth}월 ${String(curDay).padStart(2, '0')}일 ${dayOfWeekStr}`;
+
+      // 제정일(2026-11-08) 기준 D-Day 계산
+      const startDate = new Date(2026, 10, 8); // month 10 is November
+      const diffTime = today.getTime() - startDate.getTime();
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+      const ddayBadge = document.getElementById('hero-dday-badge');
+      if (diffDays >= 1) {
+        ddayBadge.textContent = `D+${diffDays}일`;
+      } else {
+        ddayBadge.textContent = `D-Day`;
+      }
+
+      // [당번 1] 오늘의 로봇청소기 오수통 비우기 & 물 채우기
+      // 평일(월~금): 최현준 / 주말(토~일): 조아영
+      const isWeekend = (dayOfWeekNum === 0 || dayOfWeekNum === 6);
+      const robotDailyWho = isWeekend ? '조아영 🌸' : '최현준 💼';
+      const robotTypeBadge = document.getElementById('badge-robot-type');
+      robotTypeBadge.textContent = isWeekend ? '주말 (토~일)' : '평일 (월~금)';
+      robotTypeBadge.className = isWeekend 
+        ? 'text-xs px-2.5 py-0.5 rounded-full font-semibold bg-pink-100 text-pink-700'
+        : 'text-xs px-2.5 py-0.5 rounded-full font-semibold bg-blue-100 text-blue-700';
+
+      const card1Name = document.getElementById('card1-assigned-name');
+      card1Name.textContent = robotDailyWho;
+      card1Name.className = isWeekend 
+        ? 'text-xl sm:text-2xl font-extrabold text-pink-600'
+        : 'text-xl sm:text-2xl font-extrabold text-blue-600';
+      document.getElementById('quick-today-robot-who').textContent = isWeekend ? '조아영' : '최현준';
+
+      // [당번 2] 이번 주 일요일 쓰레기 & 기본 빨래 당번
+      // 이번 주의 일요일 날짜 계산
+      // 만약 오늘이 일요일(0)이면 오늘, 월~토면 이번 주 일요일(오늘 + (7 - dayOfWeekNum))
+      const sundayDate = new Date(today);
+      if (dayOfWeekNum !== 0) {
+        sundayDate.setDate(today.getDate() + (7 - dayOfWeekNum));
+      }
+
+      // 해당 일요일이 그 달의 몇 주 차인지 계산 (1~7일=1주차, 8~14일=2주차, 15~21일=3주차, 22~28일=4주차, 29~31일=5주차)
+      const sundayDayNum = sundayDate.getDate();
+      const sundayMonthNum = sundayDate.getMonth() + 1;
+      const sundayWeekNum = Math.floor((sundayDayNum - 1) / 7) + 1;
+
+      // 매월 1·3주차 일요일: 조아영 / 2·4주차 일요일: 최현준 (5주차는 홀수이므로 조아영)
+      const isAyoungSunday = (sundayWeekNum % 2 !== 0);
+      const sundayWho = isAyoungSunday ? '조아영 🌸' : '최현준 💼';
+
+      document.getElementById('badge-sunday-week').textContent = `${sundayMonthNum}월 ${sundayWeekNum}주차 일요`;
+      const card2Name = document.getElementById('card2-assigned-name');
+      card2Name.textContent = sundayWho;
+      card2Name.className = isAyoungSunday
+        ? 'text-xl sm:text-2xl font-extrabold text-pink-600'
+        : 'text-xl sm:text-2xl font-extrabold text-blue-600';
+      document.getElementById('quick-sunday-who').textContent = isAyoungSunday ? '조아영' : '최현준';
+
+      // [당번 3] 이달의 로봇청소기 월 1회 정기 대청소
+      // 홀수월: 최현준 / 짝수월: 조아영
+      const currentMonthInt = today.getMonth() + 1;
+      const isOddMonth = (currentMonthInt % 2 !== 0);
+      const robotDeepWho = isOddMonth ? '최현준 💼' : '조아영 🌸';
+
+      document.getElementById('badge-month-odd-even').textContent = `${currentMonthInt}월 (${isOddMonth ? '홀수월' : '짝수월'})`;
+      const card3Name = document.getElementById('card3-assigned-name');
+      card3Name.textContent = robotDeepWho;
+      card3Name.className = isOddMonth
+        ? 'text-xl sm:text-2xl font-extrabold text-blue-600'
+        : 'text-xl sm:text-2xl font-extrabold text-pink-600';
+
+      // [일정 및 D-Day 계산]
+      // 조아영 급여: 16일
+      calculateFixedDayDDay('dday-ayoung-pay', 16, today);
+      // 최현준 급여: 21일
+      calculateFixedDayDDay('dday-hyunjun-pay', 21, today);
+      // 공동 생활비 통장 자동이체일: 25일
+      calculateFixedDayDDay('dday-common-transfer', 25, today);
+
+      // 크리스마스 D-Day (12월 25일)
+      let xmasDate = new Date(curYear, 11, 25);
+      if (today > xmasDate) {
+        xmasDate = new Date(curYear + 1, 11, 25);
+      }
+      const xmasDiff = Math.ceil((xmasDate - today) / (1000 * 60 * 60 * 24));
+      document.getElementById('dday-xmas').textContent = xmasDiff === 0 ? 'D-Day 🎄' : `D-${xmasDiff}`;
+    }
+
+    /**
+     * 고정 매월 날짜(targetDay) 기준 다음 D-Day 계산 유틸
+     */
+    function calculateFixedDayDDay(elementId, targetDay, today) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+
+      const curYear = today.getFullYear();
+      const curMonth = today.getMonth();
+      const curDay = today.getDate();
+
+      let targetDate;
+      if (curDay <= targetDay) {
+        targetDate = new Date(curYear, curMonth, targetDay);
+      } else {
+        targetDate = new Date(curYear, curMonth + 1, targetDay);
+      }
+
+      const diffDays = Math.ceil((targetDate - today) / (1000 * 60 * 60 * 24));
+      if (diffDays === 0) {
+        el.textContent = '오늘! 💰';
+        el.className = el.className.replace('text-slate-600', 'text-rose-600 font-black animate-pulse');
+      } else {
+        el.textContent = `D-${diffDays}`;
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 탭 전환 로직
+     * =========================================================================
+     */
+    function switchTab(tabId) {
+      STATE.currentTab = tabId;
+
+      // 1. 탭 콘텐츠 토글
+      const tabs = ['dashboard', 'agreement', 'budget', 'ai'];
+      tabs.forEach(id => {
+        const el = document.getElementById(`tab-${id}`);
+        if (el) {
+          if (id === tabId) {
+            el.classList.remove('hidden');
+            el.classList.add('block');
+          } else {
+            el.classList.remove('block');
+            el.classList.add('hidden');
+          }
+        }
+      });
+
+      // 2. 데스크톱 탭 스타일
+      tabs.forEach(id => {
+        const btn = document.getElementById(`nav-desktop-${id}`);
+        if (btn) {
+          if (id === tabId) {
+            btn.className = 'tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-indigo-600 text-indigo-600 flex items-center space-x-2';
+          } else {
+            btn.className = 'tab-btn px-4 py-3 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center space-x-2';
+          }
+        }
+      });
+
+      // 3. 모바일 하단 네비게이션 스타일
+      tabs.forEach(id => {
+        const btn = document.getElementById(`nav-mobile-${id}`);
+        if (btn) {
+          if (id === tabId) {
+            btn.className = 'flex flex-col items-center justify-center flex-1 py-1 text-indigo-600 font-bold transition';
+          } else {
+            btn.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium transition';
+          }
+        }
+      });
+
+      // 4. 탭 특화 렌더링
+      if (tabId === 'budget') {
+        renderBudgetDashboard();
+        renderTransactions();
+        renderTolls();
+      } else if (tabId === 'ai') {
+        generateAiPrompt();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * =========================================================================
+     * 데이터 동기화 & 클라우드 통신 (GAS API)
+     * =========================================================================
+     */
+    async function fetchCloudData(isManual = false) {
+      if (!STATE.gasUrl) {
+        if (isManual) showToast('구글 시트 연동 URL이 설정되지 않았습니다. [설정 ⚙️]에서 등록해 주세요.', 'info');
+        return;
+      }
+
+      const icon = document.getElementById('sync-refresh-icon');
+      if (icon) icon.classList.add('fa-spin');
+
+      try {
+        const res = await fetch(`${STATE.gasUrl}?action=getAll&t=${Date.now()}`);
+        if (!res.ok) throw new Error('네트워크 응답 오류 (' + res.status + ')');
+        
+        const data = await res.json();
+        if (data.success) {
+          STATE.isConnected = true;
+          STATE.transactions = data.transactions || [];
+          STATE.tolls = data.tolls || [];
+          STATE.checklist = data.checklist && data.checklist.length > 0 ? data.checklist : DEFAULT_CHECKLIST;
+
+          // 로컬 스토리지에 캐시 백업
+          saveLocalStorageData();
+          updateSyncStatusUI();
+          renderAll();
+
+          if (isManual) showToast('구글 스프레드시트와 실시간 동기화 완료! 🟢', 'success');
+        } else {
+          throw new Error(data.error || '데이터 로드 실패');
+        }
+      } catch (err) {
+        console.warn('Cloud sync failed, using local storage fallback:', err);
+        STATE.isConnected = false;
+        updateSyncStatusUI();
+        if (isManual) showToast('클라우드 동기화 실패. 로컬 저장 데이터를 사용합니다.', 'warning');
+      } finally {
+        if (icon) icon.classList.remove('fa-spin');
+      }
+    }
+
+    /**
+     * 클라우드 POST 요청 전송 함수 (CORS 회피 text/plain 방식)
+     */
+    async function postCloudAction(action, payload) {
+      if (!STATE.gasUrl) return null;
+
+      try {
+        const bodyData = JSON.stringify({ action: action, ...payload });
+        const res = await fetch(STATE.gasUrl, {
+          method: 'POST',
+          mode: 'no-cors', // Apps Script 표준 웹앱 비동기 호출
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: bodyData
+        });
+        return true;
+      } catch (err) {
+        console.error('postCloudAction error:', err);
+        return false;
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 로컬 스토리지 데이터 관리 (Fallback)
+     * =========================================================================
+     */
+    function loadLocalStorageData() {
+      try {
+        const tx = localStorage.getItem('portal_tx');
+        const tolls = localStorage.getItem('portal_tolls');
+        const chk = localStorage.getItem('portal_checklist');
+
+        STATE.transactions = tx ? JSON.parse(tx) : getSampleTransactions();
+        STATE.tolls = tolls ? JSON.parse(tolls) : getSampleTolls();
+        STATE.checklist = chk ? JSON.parse(chk) : DEFAULT_CHECKLIST;
+      } catch (e) {
+        console.error('Failed to parse localStorage data:', e);
+        STATE.transactions = getSampleTransactions();
+        STATE.tolls = getSampleTolls();
+        STATE.checklist = DEFAULT_CHECKLIST;
+      }
+    }
+
+    function saveLocalStorageData() {
+      localStorage.setItem('portal_tx', JSON.stringify(STATE.transactions));
+      localStorage.setItem('portal_tolls', JSON.stringify(STATE.tolls));
+      localStorage.setItem('portal_checklist', JSON.stringify(STATE.checklist));
+    }
+
+    function updateSyncStatusUI() {
+      const indicator = document.getElementById('sync-indicator');
+      const text = document.getElementById('sync-text');
+      const btn = document.getElementById('btn-sync-status');
+
+      if (STATE.gasUrl && STATE.isConnected) {
+        indicator.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse';
+        text.textContent = '구글 시트 연동됨';
+        btn.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-emerald-200 bg-emerald-50 text-emerald-800 transition hover:shadow-sm';
+      } else if (STATE.gasUrl && !STATE.isConnected) {
+        indicator.className = 'w-2.5 h-2.5 rounded-full bg-amber-400';
+        text.textContent = '연결 확인 중';
+        btn.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-amber-200 bg-amber-50 text-amber-800 transition hover:shadow-sm';
+      } else {
+        indicator.className = 'w-2.5 h-2.5 rounded-full bg-slate-400';
+        text.textContent = '로컬 저장 모드';
+        btn.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-slate-200 bg-slate-50 text-slate-700 transition hover:shadow-sm';
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 체크리스트 렌더링 & 토글 로직
+     * =========================================================================
+     */
+    function renderChecklist() {
+      const container = document.getElementById('checklist-container');
+      if (!container) return;
+
+      container.innerHTML = '';
+      const total = STATE.checklist.length;
+      let checkedCount = 0;
+
+      STATE.checklist.forEach(item => {
+        if (item.checked) checkedCount++;
+
+        const row = document.createElement('div');
+        row.className = `flex items-center justify-between p-3.5 rounded-2xl border transition-all cursor-pointer ${
+          item.checked ? 'bg-teal-50/60 border-teal-200 text-slate-400' : 'bg-slate-50 border-slate-100 hover:border-slate-200 text-slate-800'
+        }`;
+        row.onclick = () => toggleChecklistItem(item.key);
+
+        row.innerHTML = `
+          <div class="flex items-center space-x-3 select-none flex-grow">
+            <div class="w-6 h-6 rounded-lg flex items-center justify-center transition-all ${
+              item.checked ? 'bg-teal-600 text-white shadow-xs' : 'border-2 border-slate-300 bg-white'
+            }">
+              ${item.checked ? '<i class="fa-solid fa-check text-xs"></i>' : ''}
+            </div>
+            <span class="text-xs font-medium ${item.checked ? 'line-through text-slate-400' : 'text-slate-800'}">
+              ${escapeHtml(item.label)}
+            </span>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      // 프로그레스 바 갱신
+      const percent = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
+      document.getElementById('checklist-progress-text').textContent = `${checkedCount}/${total} 완료 (${percent}%)`;
+      document.getElementById('checklist-progress-bar').style.width = `${percent}%`;
+    }
+
+    async function toggleChecklistItem(key) {
+      const item = STATE.checklist.find(x => x.key === key);
+      if (!item) return;
+
+      item.checked = !item.checked;
+      renderChecklist();
+      saveLocalStorageData();
+
+      // 구글 시트에 비동기 전송
+      postCloudAction('toggleChecklist', { key: key, checked: item.checked });
+      showToast(item.checked ? '가사 체크 완료! 수고하셨습니다 👏' : '체크 해제되었습니다.', 'info');
+    }
+
+    async function resetChecklistAll() {
+      if (!confirm('이번 주 체크리스트를 모두 초기화하시겠습니까?')) return;
+
+      STATE.checklist.forEach(item => { item.checked = false; });
+      renderChecklist();
+      saveLocalStorageData();
+      postCloudAction('resetChecklist', {});
+      showToast('새로운 한 주를 위해 체크리스트가 초기화되었습니다! ✨', 'success');
+    }
+
+    async function promptAddChecklistItem() {
+      const label = prompt('새로 추가할 가사 체크리스트 항목을 입력하세요:');
+      if (!label || !label.trim()) return;
+
+      const newKey = 'chk_' + Date.now();
+      const newItem = { key: newKey, label: label.trim(), checked: false };
+      STATE.checklist.push(newItem);
+
+      renderChecklist();
+      saveLocalStorageData();
+      postCloudAction('addChecklistItem', { key: newKey, label: label.trim() });
+      showToast('새 체크리스트 항목이 추가되었습니다.', 'success');
+    }
+
+    function toggleDutyCompleted(type) {
+      if (type === 'robot_daily') {
+        const btn = document.getElementById('btn-duty-robot-daily');
+        const text = document.getElementById('btn-duty-robot-daily-text');
+        const isDone = btn.classList.contains('bg-emerald-600');
+        if (!isDone) {
+          btn.className = 'w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition flex items-center justify-center space-x-2 bg-emerald-600 text-white';
+          text.textContent = '오늘 물통 관리 완료! ✨';
+          showToast('오늘 로봇청소기 물통 비우기&채우기 완료! 깔끔해요 👍', 'success');
+        } else {
+          btn.className = 'w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition flex items-center justify-center space-x-2 bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-600';
+          text.textContent = '오늘 물통 관리 완료 체크';
+        }
+      } else if (type === 'robot_deep') {
+        const btn = document.getElementById('btn-duty-robot-deep');
+        const text = document.getElementById('btn-duty-robot-deep-text');
+        const isDone = btn.classList.contains('bg-emerald-600');
+        if (!isDone) {
+          btn.className = 'w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition flex items-center justify-center space-x-2 bg-emerald-600 text-white';
+          text.textContent = '이달 대청소 완료! 🧼';
+          showToast('로봇청소기 정기 대청소 완료! 깨끗해졌어요 ✨', 'success');
+        } else {
+          btn.className = 'w-full py-2.5 px-3 rounded-xl text-xs font-semibold transition flex items-center justify-center space-x-2 bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700';
+          text.textContent = '이달 대청소 완료 체크';
+        }
+      }
+    }
+
+    /**
+     * =========================================================================
+     * [탭 3] 가계부 & 장거리 톨비 계산기 렌더링
+     * =========================================================================
+     */
+    function renderBudgetDashboard() {
+      const month = STATE.selectedMonth; // YYYY-MM
+      const txs = STATE.transactions.filter(t => t.month === month);
+      const tolls = STATE.tolls.filter(t => t.month === month);
+
+      let incomeHyunjun = 0;
+      let incomeAyoung = 0;
+      let commonLiving = 0;
+      let commonSavings = 0;
+      let personalHyunjun = 0;
+      let personalAyoung = 0;
+
+      txs.forEach(t => {
+        const amt = Number(t.amount) || 0;
+        const cat = t.category || '';
+        const who = t.who || '';
+
+        if (cat.startsWith('[수입]')) {
+          if (who === '현준') incomeHyunjun += amt;
+          else if (who === '아영') incomeAyoung += amt;
+          else {
+            // 공동 수입일 경우 절반 또는 수입 총액 합산
+            incomeHyunjun += amt / 2;
+            incomeAyoung += amt / 2;
+          }
+        } else if (cat.startsWith('[공동 생활비]')) {
+          commonLiving += amt;
+        } else if (cat.startsWith('[공동 목돈')) {
+          commonSavings += amt;
+        } else if (who === '현준') {
+          personalHyunjun += amt;
+        } else if (who === '아영') {
+          personalAyoung += amt;
+        } else {
+          commonLiving += amt;
+        }
+      });
+
+      // 장거리 톨비 정산 예정액 자동 합산 (미정산 및 이달 총 톨비)
+      const tollTotal = tolls.reduce((acc, cur) => acc + (Number(cur.amount) || 0), 0);
+      const tollSettledTotal = tolls.filter(t => t.settled).reduce((acc, cur) => acc + (Number(cur.amount) || 0), 0);
+      const tollPendingTotal = tollTotal - tollSettledTotal;
+
+      const totalIncome = incomeHyunjun + incomeAyoung;
+      const commonTotal = commonLiving + commonSavings;
+      const personalTotal = personalHyunjun + personalAyoung;
+      const totalExpense = commonTotal + personalTotal;
+      const balance = totalIncome - totalExpense;
+
+      // KPI UI 업데이트
+      document.getElementById('kpi-total-income').textContent = formatCurrency(totalIncome);
+      document.getElementById('kpi-income-hyunjun').textContent = formatCurrency(incomeHyunjun);
+      document.getElementById('kpi-income-ayoung').textContent = formatCurrency(incomeAyoung);
+
+      document.getElementById('kpi-common-total').textContent = formatCurrency(commonTotal);
+      document.getElementById('kpi-common-living').textContent = formatCurrency(commonLiving);
+      document.getElementById('kpi-common-savings').textContent = formatCurrency(commonSavings);
+
+      document.getElementById('kpi-personal-total').textContent = formatCurrency(personalTotal);
+      document.getElementById('kpi-personal-hyunjun').textContent = formatCurrency(personalHyunjun);
+      document.getElementById('kpi-personal-ayoung').textContent = formatCurrency(personalAyoung);
+
+      const balEl = document.getElementById('kpi-balance');
+      balEl.textContent = formatCurrency(balance);
+      balEl.className = balance >= 0 
+        ? 'text-xl sm:text-2xl font-black text-emerald-600'
+        : 'text-xl sm:text-2xl font-black text-rose-600';
+
+      const saveRate = totalIncome > 0 ? Math.round(((balance + commonSavings) / totalIncome) * 100) : 0;
+      document.getElementById('kpi-balance-rate').textContent = `저축/잉여율 ${saveRate}%`;
+
+      // 톨비 박스 갱신
+      document.getElementById('toll-pending-amount').textContent = formatCurrency(tollPendingTotal);
+      document.getElementById('toll-settled-info').textContent = `정산 완료: ${formatCurrency(tollSettledTotal)} / 총액: ${formatCurrency(tollTotal)}`;
+    }
+
+    /**
+     * 거래 내역 목록 렌더링
+     */
+    function renderTransactions() {
+      const tbody = document.getElementById('tx-table-tbody');
+      const emptyState = document.getElementById('tx-empty-state');
+      if (!tbody) return;
+
+      const month = STATE.selectedMonth;
+      const search = (document.getElementById('tx-search-input')?.value || '').toLowerCase().trim();
+      const filter = STATE.txFilter;
+
+      let list = STATE.transactions.filter(t => t.month === month);
+
+      // 필터 적용
+      if (filter === 'income') {
+        list = list.filter(t => (t.category || '').startsWith('[수입]'));
+      } else if (filter === 'common') {
+        list = list.filter(t => (t.category || '').startsWith('[공동 생활비]'));
+      } else if (filter === 'common_save') {
+        list = list.filter(t => (t.category || '').startsWith('[공동 목돈'));
+      } else if (filter === 'hyunjun') {
+        list = list.filter(t => t.who === '현준');
+      } else if (filter === 'ayoung') {
+        list = list.filter(t => t.who === '아영');
+      }
+
+      // 검색어 적용
+      if (search) {
+        list = list.filter(t => 
+          (t.memo || '').toLowerCase().includes(search) || 
+          (t.category || '').toLowerCase().includes(search) ||
+          (t.who || '').toLowerCase().includes(search)
+        );
+      }
+
+      // 날짜 역순 정렬
+      list.sort((a, b) => (b.date || '').localeCompare(a.date || '') || b.id.localeCompare(a.id));
+
+      tbody.innerHTML = '';
+      if (list.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
+
+        const isIncome = (item.category || '').startsWith('[수입]');
+        const whoBadgeClass = item.who === '공동' 
+          ? 'bg-indigo-50 text-indigo-700 border-indigo-100'
+          : item.who === '현준'
+          ? 'bg-blue-50 text-blue-700 border-blue-100'
+          : 'bg-pink-50 text-pink-700 border-pink-100';
+
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-medium text-slate-500">${escapeHtml(item.date)}</td>
+          <td class="px-4 py-3">
+            <span class="px-2 py-0.5 rounded-md text-[11px] font-bold border ${whoBadgeClass}">
+              ${escapeHtml(item.who)}
+            </span>
+          </td>
+          <td class="px-4 py-3 font-semibold text-slate-800">${escapeHtml(item.category)}</td>
+          <td class="px-4 py-3 text-slate-600">${escapeHtml(item.memo || '-')}</td>
+          <td class="px-4 py-3 text-right font-black ${isIncome ? 'text-blue-600' : 'text-slate-900'}">
+            ${isIncome ? '+' : '-'}${formatCurrency(item.amount)}
+          </td>
+          <td class="px-4 py-3 text-center">
+            <button onclick="deleteTransaction('${item.id}')" class="text-slate-300 hover:text-rose-500 transition p-1" title="삭제">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    /**
+     * 장거리 통행료(톨비) 목록 렌더링
+     */
+    function renderTolls() {
+      const tbody = document.getElementById('toll-list-tbody');
+      if (!tbody) return;
+
+      const month = STATE.selectedMonth;
+      const list = STATE.tolls.filter(t => t.month === month);
+      list.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+      tbody.innerHTML = '';
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-slate-400">이달에 등록된 장거리 톨비 정산 내역이 없습니다.</td></tr>`;
+        return;
+      }
+
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-rose-50/40 transition border-b border-rose-50';
+
+        tr.innerHTML = `
+          <td class="px-4 py-2.5 text-slate-500 font-medium">${escapeHtml(item.date)}</td>
+          <td class="px-4 py-2.5 font-semibold text-slate-800">${escapeHtml(item.desc)}</td>
+          <td class="px-4 py-2.5 text-right font-bold text-rose-600">${formatCurrency(item.amount)}</td>
+          <td class="px-4 py-2.5 text-center">
+            <button onclick="toggleTollSettled('${item.id}', ${!item.settled})" class="px-2.5 py-1 rounded-full text-[11px] font-bold transition ${
+              item.settled 
+                ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200' 
+                : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+            }">
+              ${item.settled ? '정산 완료 ✓' : '미정산 (대기)'}
+            </button>
+          </td>
+          <td class="px-4 py-2.5 text-center">
+            <button onclick="deleteToll('${item.id}')" class="text-slate-300 hover:text-rose-500 transition p-1" title="삭제">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    /**
+     * 신규 거래 등록 처리
+     */
+    async function handleTxSubmit(e) {
+      e.preventDefault();
+      const who = document.getElementById('tx-who').value;
+      const category = document.getElementById('tx-category').value;
+      const amount = Number(document.getElementById('tx-amount').value) || 0;
+      const date = document.getElementById('tx-date').value;
+      const memo = document.getElementById('tx-memo').value.trim();
+
+      if (!amount || amount <= 0) {
+        alert('금액을 올바르게 입력해 주세요.');
+        return;
+      }
+      if (!date) {
+        alert('날짜를 선택해 주세요.');
+        return;
+      }
+
+      const month = date.substring(0, 7);
+      const newTx = {
+        id: 'tx_' + Date.now(),
+        month: month,
+        date: date,
+        who: who,
+        category: category,
+        memo: memo,
+        amount: amount,
+        createdAt: new Date().toISOString()
+      };
+
+      STATE.transactions.push(newTx);
+      saveLocalStorageData();
+
+      // UI 갱신
+      closeTxModal();
+      if (STATE.selectedMonth === month) {
+        renderBudgetDashboard();
+        renderTransactions();
+      }
+      showToast('거래 내역이 성공적으로 저장되었습니다! 💰', 'success');
+
+      // 클라우드 비동기 저장
+      postCloudAction('addTransaction', { data: newTx });
+    }
+
+    async function deleteTransaction(id) {
+      if (!confirm('이 내역을 삭제하시겠습니까?')) return;
+
+      STATE.transactions = STATE.transactions.filter(t => t.id !== id);
+      saveLocalStorageData();
+      renderBudgetDashboard();
+      renderTransactions();
+      showToast('내역이 삭제되었습니다.', 'info');
+
+      postCloudAction('deleteTransaction', { id: id });
+    }
+
+    /**
+     * 신규 톨비 등록 처리
+     */
+    async function handleTollSubmit(e) {
+      e.preventDefault();
+      const date = document.getElementById('toll-date').value;
+      const desc = document.getElementById('toll-desc').value.trim();
+      const amount = Number(document.getElementById('toll-amount').value) || 0;
+
+      if (!date || !desc || amount <= 0) {
+        alert('날짜, 행선지, 금액을 올바르게 입력해 주세요.');
+        return;
+      }
+
+      const month = date.substring(0, 7);
+      const newToll = {
+        id: 'toll_' + Date.now(),
+        month: month,
+        date: date,
+        desc: desc,
+        amount: amount,
+        settled: false
+      };
+
+      // 톨비 목록에 추가
+      STATE.tolls.push(newToll);
+
+      // 동시에 공동 생활비 [공동 생활비] 차량 주차비·장거리 톨비 지출 내역에도 자동 반영!
+      const autoCommonTx = {
+        id: 'tx_toll_' + newToll.id,
+        month: month,
+        date: date,
+        who: '공동',
+        category: '[공동 생활비] 차량 주차비·장거리 톨비',
+        memo: `[장거리 톨비] ${desc}`,
+        amount: amount,
+        createdAt: new Date().toISOString()
+      };
+      STATE.transactions.push(autoCommonTx);
+
+      saveLocalStorageData();
+      document.getElementById('toll-desc').value = '';
+      document.getElementById('toll-amount').value = '';
+
+      renderBudgetDashboard();
+      renderTransactions();
+      renderTolls();
+      showToast(`장거리 톨비(${formatCurrency(amount)})가 정산 목록 및 공동 지출에 반영되었습니다! 🚗`, 'success');
+
+      // 클라우드 동기화
+      postCloudAction('addToll', { data: newToll });
+      postCloudAction('addTransaction', { data: autoCommonTx });
+    }
+
+    async function toggleTollSettled(id, newStatus) {
+      const toll = STATE.tolls.find(t => t.id === id);
+      if (!toll) return;
+
+      toll.settled = newStatus;
+      saveLocalStorageData();
+      renderBudgetDashboard();
+      renderTolls();
+      showToast(newStatus ? '정산 완료로 변경되었습니다. (계좌 이체 완료) ✓' : '정산 대기 상태로 변경되었습니다.', 'info');
+
+      postCloudAction('toggleTollSettled', { id: id, settled: newStatus });
+    }
+
+    async function deleteToll(id) {
+      if (!confirm('이 톨비 내역을 삭제하시겠습니까? (연동된 가계부 내역도 함께 정리할 수 있습니다)')) return;
+
+      STATE.tolls = STATE.tolls.filter(t => t.id !== id);
+      // 자동 연동되었던 트랜잭션도 함께 삭제
+      STATE.transactions = STATE.transactions.filter(t => t.id !== 'tx_toll_' + id);
+
+      saveLocalStorageData();
+      renderBudgetDashboard();
+      renderTransactions();
+      renderTolls();
+      showToast('톨비 내역이 삭제되었습니다.', 'info');
+
+      postCloudAction('deleteToll', { id: id });
+      postCloudAction('deleteTransaction', { id: 'tx_toll_' + id });
+    }
+
+    /**
+     * =========================================================================
+     * [탭 4] AI 객관적 월말 결산 프롬프트 생성기 로직
+     * =========================================================================
+     */
+    function generateAiPrompt() {
+      const month = STATE.selectedMonth;
+      const [yearStr, monthStr] = month.split('-');
+      document.getElementById('ai-target-month-label').textContent = `${yearStr}년 ${monthStr}월`;
+
+      const txs = STATE.transactions.filter(t => t.month === month);
+      const tolls = STATE.tolls.filter(t => t.month === month);
+
+      let incomeHyunjun = 0;
+      let incomeAyoung = 0;
+      let incomeItems = [];
+
+      let commonLiving = 0;
+      let commonSavings = 0;
+      const commonCategoryMap = {};
+
+      let personalHyunjun = 0;
+      const hyunjunCategoryMap = {};
+
+      let personalAyoung = 0;
+      const ayoungCategoryMap = {};
+
+      txs.forEach(t => {
+        const amt = Number(t.amount) || 0;
+        const cat = t.category || '기타';
+        const who = t.who || '';
+
+        if (cat.startsWith('[수입]')) {
+          if (who === '현준') incomeHyunjun += amt;
+          else if (who === '아영') incomeAyoung += amt;
+          incomeItems.push(`- ${t.date} | ${who} | ${cat}: ${formatCurrency(amt)} (${t.memo || '정기'})`);
+        } else if (cat.startsWith('[공동 생활비]')) {
+          commonLiving += amt;
+          commonCategoryMap[cat] = (commonCategoryMap[cat] || 0) + amt;
+        } else if (cat.startsWith('[공동 목돈')) {
+          commonSavings += amt;
+          commonCategoryMap[cat] = (commonCategoryMap[cat] || 0) + amt;
+        } else if (who === '현준') {
+          personalHyunjun += amt;
+          hyunjunCategoryMap[cat] = (hyunjunCategoryMap[cat] || 0) + amt;
+        } else if (who === '아영') {
+          personalAyoung += amt;
+          ayoungCategoryMap[cat] = (ayoungCategoryMap[cat] || 0) + amt;
+        }
+      });
+
+      const tollTotal = tolls.reduce((acc, cur) => acc + (Number(cur.amount) || 0), 0);
+      const totalIncome = incomeHyunjun + incomeAyoung;
+      const totalExpense = commonLiving + commonSavings + personalHyunjun + personalAyoung;
+      const balance = totalIncome - totalExpense;
+      const saveRate = totalIncome > 0 ? Math.round(((balance + commonSavings) / totalIncome) * 100) : 0;
+
+      let promptText = `# [월말 가계부 결산 & 커플 라이프 피드백 요청]\n\n`;
+      promptText += `## 1. 개요 및 분석 배경\n`;
+      promptText += `- 결산 대상 기간: **${yearStr}년 ${monthStr}월**\n`;
+      promptText += `- 구성원: 최현준(남편/동거인), 조아영(아내/동거인)\n`;
+      promptText += `- 공동생활 기본 원칙: 2026년 11월 8일 제정된 공동생활 합의서 준수, 상호 격려와 건설적 피드백 지향 (감시나 추궁 절대 금지)\n\n`;
+
+      promptText += `## 2. ${month} 핵심 재무 데이터 요약표\n`;
+      promptText += `| 항목 구분 | 금액 | 세부 비고 |\n`;
+      promptText += `| :--- | :--- | :--- |\n`;
+      promptText += `| **2인 총수입** | **${formatCurrency(totalIncome)}** | 현준: ${formatCurrency(incomeHyunjun)} / 아영: ${formatCurrency(incomeAyoung)} |\n`;
+      promptText += `| **공동 생활비 총합** | ${formatCurrency(commonLiving)} | 식비, 관리비, OTT, 소모품 등 |\n`;
+      promptText += `| **공동 목돈 (투자/여행)** | ${formatCurrency(commonSavings)} | 조아영 총괄 관리 분 |\n`;
+      promptText += `| **최현준 개인 지출/투자** | ${formatCurrency(personalHyunjun)} | 회사비, 개인취미, 개인투자 등 |\n`;
+      promptText += `| **조아영 개인 지출/투자** | ${formatCurrency(personalAyoung)} | 회사비, 개인취미, 개인투자 등 |\n`;
+      promptText += `| **장거리 톨비 정산액** | ${formatCurrency(tollTotal)} | 공동계좌 → 개인계좌 지급 대상 |\n`;
+      promptText += `| **최종 잔여 자금 (잉여금)** | **${formatCurrency(balance)}** | 수입 대비 잉여/저축률: **${saveRate}%** |\n\n`;
+
+      promptText += `## 3. 카테고리별 세부 지출 내역\n`;
+      promptText += `### [공동 생활비 & 목돈]\n`;
+      if (Object.keys(commonCategoryMap).length > 0) {
+        for (const [k, v] of Object.entries(commonCategoryMap)) {
+          promptText += `- ${k}: ${formatCurrency(v)}\n`;
+        }
+      } else {
+        promptText += `- 등록된 공동 지출 내역 없음\n`;
+      }
+
+      promptText += `\n### [최현준 개인 지출/자산]\n`;
+      if (Object.keys(hyunjunCategoryMap).length > 0) {
+        for (const [k, v] of Object.entries(hyunjunCategoryMap)) {
+          promptText += `- ${k}: ${formatCurrency(v)}\n`;
+        }
+      } else {
+        promptText += `- 등록된 개인 지출 내역 없음\n`;
+      }
+
+      promptText += `\n### [조아영 개인 지출/자산]\n`;
+      if (Object.keys(ayoungCategoryMap).length > 0) {
+        for (const [k, v] of Object.entries(ayoungCategoryMap)) {
+          promptText += `- ${k}: ${formatCurrency(v)}\n`;
+        }
+      } else {
+        promptText += `- 등록된 개인 지출 내역 없음\n`;
+      }
+
+      if (tolls.length > 0) {
+        promptText += `\n### [장거리 톨비 세부]\n`;
+        tolls.forEach(t => {
+          promptText += `- ${t.date} | ${t.desc}: ${formatCurrency(t.amount)} (${t.settled ? '정산완료' : '미정산'})\n`;
+        });
+      }
+
+      promptText += `\n## 4. AI 재무 코치에게 요청하는 4대 분석 가이드라인\n`;
+      promptText += `당신은 커플 및 신혼부부 전문의 따뜻하고 통찰력 있는 '재무 코치이자 라이프 멘토'입니다.\n`;
+      promptText += `위 결산 데이터를 바탕으로 아래 4가지 항목에 대해 다정하고 객관적인 리포트를 작성해 주세요.\n\n`;
+      promptText += `1. **따뜻한 칭찬과 수고 격려:** 한 달 동안 각자의 일터와 보금자리에서 열심히 살아온 두 사람을 진심으로 칭찬하고 격려해 주세요.\n`;
+      promptText += `2. **공동 생활비 객관적 평가:** 식비, 관리비 등 공동 생활비 수준이 2인 가구 기준 적절한지 분석하고, 삶의 질을 해치지 않는 알뜰 절약 팁을 제안해 주세요.\n`;
+      promptText += `3. **개인별 지출 및 투자 밸런스 점검:** 누구 한쪽의 소비를 지적하거나 비난하지 않고, 두 사람의 재정 건전성을 높일 수 있는 균형 잡힌 자산 배분 조언을 건네주세요.\n`;
+      promptText += `4. **다음 달을 위한 3가지 현실적 실천 미션:** 다음 달에 둘이 함께 소소하게 실천할 수 있는 재미있고 유익한 재무/가사 미션 3가지를 제시해 주세요.`;
+
+      document.getElementById('ai-prompt-textarea').value = promptText;
+    }
+
+    async function copyAiPrompt() {
+      const textarea = document.getElementById('ai-prompt-textarea');
+      if (!textarea) return;
+
+      try {
+        await navigator.clipboard.writeText(textarea.value);
+        showToast('AI 결산 프롬프트가 클립보드에 복사되었습니다! ✨', 'success');
+      } catch (err) {
+        textarea.select();
+        document.execCommand('copy');
+        showToast('프롬프트가 복사되었습니다! ✨', 'success');
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 유틸리티 및 모달 핸들러
+     * =========================================================================
+     */
+    function renderAll() {
+      renderChecklist();
+      renderBudgetDashboard();
+      renderTransactions();
+      renderTolls();
+      generateAiPrompt();
+    }
+
+    function formatCurrency(val) {
+      return (Number(val) || 0).toLocaleString('ko-KR') + '원';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function changeMonth(delta) {
+      const [year, month] = STATE.selectedMonth.split('-').map(Number);
+      const newDate = new Date(year, month - 1 + delta, 1);
+      const newY = newDate.getFullYear();
+      const newM = String(newDate.getMonth() + 1).padStart(2, '0');
+      STATE.selectedMonth = `${newY}-${newM}`;
+      document.getElementById('budget-month-picker').value = STATE.selectedMonth;
+
+      renderBudgetDashboard();
+      renderTransactions();
+      renderTolls();
+      generateAiPrompt();
+    }
+
+    function onMonthPickerChange() {
+      const val = document.getElementById('budget-month-picker').value;
+      if (val) {
+        STATE.selectedMonth = val;
+        renderBudgetDashboard();
+        renderTransactions();
+        renderTolls();
+        generateAiPrompt();
+      }
+    }
+
+    function resetToCurrentMonth() {
+      const today = new Date();
+      const y = today.getFullYear();
+      const m = String(today.getMonth() + 1).padStart(2, '0');
+      STATE.selectedMonth = `${y}-${m}`;
+      document.getElementById('budget-month-picker').value = STATE.selectedMonth;
+
+      renderBudgetDashboard();
+      renderTransactions();
+      renderTolls();
+      generateAiPrompt();
+    }
+
+    function setTxFilter(filter) {
+      STATE.txFilter = filter;
+      document.querySelectorAll('#tx-filter-group .filter-btn').forEach(btn => {
+        if (btn.dataset.filter === filter) {
+          btn.className = 'filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white';
+        } else {
+          btn.className = 'filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200';
+        }
+      });
+      renderTransactions();
+    }
+
+    function toggleTollSection() {
+      const sec = document.getElementById('section-toll-counter');
+      if (sec) {
+        sec.scrollIntoView({ behavior: 'smooth' });
+        sec.classList.add('ring-2', 'ring-rose-400');
+        setTimeout(() => sec.classList.remove('ring-2', 'ring-rose-400'), 1500);
+      }
+    }
+
+    // 거래 내역 모달 관련
+    function openTxModal() {
+      const today = new Date();
+      const y = today.getFullYear();
+      const m = String(today.getMonth() + 1).padStart(2, '0');
+      const d = String(today.getDate()).padStart(2, '0');
+      document.getElementById('tx-date').value = `${y}-${m}-${d}`;
+      document.getElementById('modal-tx').classList.remove('hidden');
+    }
+
+    function closeTxModal() {
+      document.getElementById('modal-tx').classList.add('hidden');
+    }
+
+    function setTxWho(who) {
+      document.getElementById('tx-who').value = who;
+      
+      const btnCommon = document.getElementById('who-btn-common');
+      const btnHyunjun = document.getElementById('who-btn-hyunjun');
+      const btnAyoung = document.getElementById('who-btn-ayoung');
+
+      const activeClass = 'py-2.5 rounded-xl text-xs font-bold border transition bg-indigo-600 text-white border-indigo-600';
+      const inactiveClass = 'py-2.5 rounded-xl text-xs font-bold border transition bg-slate-50 text-slate-700 border-slate-200';
+
+      btnCommon.className = who === '공동' ? activeClass : inactiveClass;
+      btnHyunjun.className = who === '현준' ? activeClass : inactiveClass;
+      btnAyoung.className = who === '아영' ? activeClass : inactiveClass;
+
+      initTxModalCategory();
+    }
+
+    function initTxModalCategory() {
+      const who = document.getElementById('tx-who').value || '공동';
+      const select = document.getElementById('tx-category');
+      if (!select) return;
+
+      select.innerHTML = '';
+      const list = CATEGORIES[who] || CATEGORIES['공동'];
+      list.forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
+      });
+    }
+
+    function addAmountToInput(add) {
+      const input = document.getElementById('tx-amount');
+      const cur = Number(input.value) || 0;
+      input.value = cur + add;
+    }
+
+    // 설정 모달 관련
+    function openSettingsModal() {
+      document.getElementById('input-gas-url').value = STATE.gasUrl || '';
+      document.getElementById('settings-test-result').classList.add('hidden');
+      document.getElementById('modal-settings').classList.remove('hidden');
+    }
+
+    function closeSettingsModal() {
+      document.getElementById('modal-settings').classList.add('hidden');
+    }
+
+    async function testGasConnection() {
+      const url = document.getElementById('input-gas-url').value.trim();
+      const resultBox = document.getElementById('settings-test-result');
+      const icon = document.getElementById('btn-test-icon');
+
+      if (!url) {
+        resultBox.className = 'p-3 rounded-xl text-xs bg-rose-50 text-rose-700 border border-rose-200 block';
+        resultBox.textContent = '웹 앱 URL을 입력해 주세요.';
+        return;
+      }
+
+      icon.className = 'fa-solid fa-spinner fa-spin';
+      resultBox.className = 'p-3 rounded-xl text-xs bg-slate-100 text-slate-700 block';
+      resultBox.textContent = '구글 시트 API와 통신을 시도하는 중입니다...';
+
+      try {
+        const res = await fetch(`${url}?action=checkHealth&t=${Date.now()}`);
+        const json = await res.json();
+        if (json.status === 'ok') {
+          resultBox.className = 'p-3 rounded-xl text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+          resultBox.innerHTML = '<strong>연결 성공! 🟢</strong> 구글 스프레드시트와 정상적으로 통신할 수 있습니다.';
+        } else {
+          throw new Error('응답 상태 비정상');
+        }
+      } catch (e) {
+        resultBox.className = 'p-3 rounded-xl text-xs bg-amber-50 text-amber-800 border border-amber-200 block';
+        resultBox.innerHTML = '<strong>확인 필요:</strong> 응답 확인 불가. URL 또는 배포 시 액세스 권한("모든 사용자")을 확인해 주세요.<br>오류 세부: ' + e.message;
+      } finally {
+        icon.className = 'fa-solid fa-plug';
+      }
+    }
+
+    function saveGasSettings() {
+      const url = document.getElementById('input-gas-url').value.trim();
+      STATE.gasUrl = url;
+      localStorage.setItem('gas_api_url', url);
+
+      updateSyncStatusUI();
+      closeSettingsModal();
+      showToast('구글 시트 연동 URL이 저장되었습니다! 🎉', 'success');
+
+      if (url) {
+        fetchCloudData(true);
+      }
+    }
+
+    function clearGasUrl() {
+      if (!confirm('구글 시트 연동을 해제하고 로컬 모드로 전환하시겠습니까?')) return;
+      STATE.gasUrl = '';
+      STATE.isConnected = false;
+      localStorage.removeItem('gas_api_url');
+      document.getElementById('input-gas-url').value = '';
+      updateSyncStatusUI();
+      closeSettingsModal();
+      showToast('로컬 저장 모드로 전환되었습니다.', 'info');
+    }
+
+    // 가이드 모달
+    function openGuideModal() {
+      document.getElementById('modal-guide').classList.remove('hidden');
+    }
+    function closeGuideModal() {
+      document.getElementById('modal-guide').classList.add('hidden');
+    }
+
+    // CSV 다운로드 유틸
+    function exportToCsv() {
+      const month = STATE.selectedMonth;
+      const list = STATE.transactions.filter(t => t.month === month);
+      if (list.length === 0) {
+        alert('내보낼 데이터가 없습니다.');
+        return;
+      }
+
+      let csvContent = '\uFEFF날짜,주체,카테고리,메모,금액\n';
+      list.forEach(t => {
+        csvContent += `"${t.date}","${t.who}","${t.category}","${(t.memo || '').replace(/"/g, '""')}","${t.amount}"\n`;
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `우리집_가계부_${month}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast('CSV 파일이 다운로드되었습니다.', 'success');
+    }
+
+    // 토스트 알림 헬퍼
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = `toast-anim px-4 py-3 rounded-2xl shadow-xl text-xs font-semibold flex items-center space-x-2 pointer-events-auto border transition-all ${
+        type === 'success' ? 'bg-slate-900 text-white border-slate-700' :
+        type === 'warning' ? 'bg-amber-600 text-white border-amber-700' :
+        'bg-slate-900 text-white border-slate-700'
+      }`;
+
+      const iconHtml = type === 'success' 
+        ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' 
+        : type === 'warning'
+        ? '<i class="fa-solid fa-triangle-exclamation text-amber-300"></i>'
+        : '<i class="fa-solid fa-circle-info text-indigo-400"></i>';
+
+      toast.innerHTML = `${iconHtml}<span>${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(20px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    /**
+     * =========================================================================
+     * 초기 샘플 데이터 생성기 (2026-11 첫 실행 시 체험용)
+     * =========================================================================
+     */
+    function getSampleTransactions() {
+      return [
+        { id: 'tx_s1', month: '2026-11', date: '2026-11-01', who: '현준', category: '[수입] 본업 월급', memo: '현준 10월분 정기 급여', amount: 3800000, createdAt: new Date().toISOString() },
+        { id: 'tx_s2', month: '2026-11', date: '2026-11-01', who: '아영', category: '[수입] 본업 월급', memo: '아영 10월분 정기 급여', amount: 3500000, createdAt: new Date().toISOString() },
+        { id: 'tx_s3', month: '2026-11', date: '2026-11-03', who: '공동', category: '[공동 생활비] 식비(장보기/외식)', memo: '트레이더스 공동 장보기', amount: 185000, createdAt: new Date().toISOString() },
+        { id: 'tx_s4', month: '2026-11', date: '2026-11-05', who: '공동', category: '[공동 생활비] 아파트 관리비(기본·주차·헬스·전기·수도·난방)', memo: '10월 관리비 자동이체', amount: 265000, createdAt: new Date().toISOString() },
+        { id: 'tx_s5', month: '2026-11', date: '2026-11-06', who: '공동', category: '[공동 생활비] OTT(넷플릭스·디즈니+)', memo: '넷플릭스 4K 프리미엄', amount: 17000, createdAt: new Date().toISOString() },
+        { id: 'tx_s6', month: '2026-11', date: '2026-11-07', who: '공동', category: '[공동 목돈(조아영 관리)] 공동 여행 자금', memo: '내년 해외여행 적금', amount: 500000, createdAt: new Date().toISOString() },
+        { id: 'tx_s7', month: '2026-11', date: '2026-11-08', who: '현준', category: '[개인 지출] 개인 취미·쇼핑', memo: '게임 스팀 패키지 구입', amount: 78000, createdAt: new Date().toISOString() },
+        { id: 'tx_s8', month: '2026-11', date: '2026-11-08', who: '아영', category: '[개인 지출] 개인 취미·쇼핑', memo: '겨울 니트 의류 구입', amount: 95000, createdAt: new Date().toISOString() }
+      ];
+    }
+
+    function getSampleTolls() {
+      return [
+        { id: 'toll_s1', month: '2026-11', date: '2026-11-07', desc: '강원도 강릉 왕복 여행 통행료', amount: 24800, settled: false }
+      ];
+    }
+  </script>
+</body>
+</html>
